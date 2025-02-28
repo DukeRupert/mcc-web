@@ -1,11 +1,12 @@
 # Decap CMS Configuration
 # Use DecapBridge auth (required)
 backend:
-  name: git-gateway
+  name: github
   repo: dukerupert/draw-steel
   branch: master
-  identity_url: https://auth.decapbridge.com/sites/6faa6cc2-e5df-434a-8436-15425850b2b0
-  gateway_url: https://gateway.decapbridge.com
+  base_url: https://sveltia-cms-auth.logan-8c2.workers.dev
+  # identity_url: https://auth.decapbridge.com/sites/6faa6cc2-e5df-434a-8436-15425850b2b0
+  # gateway_url: https://gateway.decapbridge.com
 
   # Quickly see who did what (optional)
   commit_messages:
