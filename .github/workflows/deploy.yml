@@ -12,7 +12,7 @@ on:
   # Optional: Run when changes are pushed to main branch
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build-and-deploy:
@@ -38,7 +38,7 @@ jobs:
       - name: Deploy to VPS via SSH
         uses: appleboy/scp-action@v0.1.4
         with:
-          host: manifoldcollection.com
+          host: manifoldcollective.com
           username: deploy
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: public/
@@ -48,7 +48,7 @@ jobs:
       - name: Set permissions
         uses: appleboy/ssh-action@v1.0.0
         with:
-          host: manifoldcollection.com
+          host: manifoldcollective.com
           username: deploy
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: chmod -R 755 /var/www/manifoldcollective/
