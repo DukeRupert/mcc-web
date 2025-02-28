@@ -12,7 +12,7 @@ on:
   # Optional: Run when changes are pushed to main branch
   push:
     branches:
-      - master
+      - main
 
 jobs:
   build-and-deploy:
@@ -34,17 +34,21 @@ jobs:
       - name: Build site
         run: hugo --minify
       
-      - name: Setup SSH
-        uses: webfactory/ssh-agent@v0.7.0
+      # Alternative SSH setup with appleboy's action
+      - name: Deploy to VPS via SSH
+        uses: appleboy/scp-action@v0.1.4
         with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-      
-      - name: Add host key
-        run: |
-          mkdir -p ~/.ssh
-          ssh-keyscan manifoldcollection.com >> ~/.ssh/known_hosts
-      
-      - name: Deploy to VPS
-        run: |
-          rsync -avz --delete public/ ${{ secrets.SSH_USER }}@manifoldcollection.com:/var/www/manifoldcollective/
-          ssh ${{ secrets.SSH_USER }}@manifoldcollection.com "chmod -R 755 /var/www/manifoldcollective"
+          host: manifoldcollection.com
+          username: deploy
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: public/
+          target: /var/www/manifoldcollective/
+          strip_components: 1
+          
+      - name: Set permissions
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: manifoldcollection.com
+          username: deploy
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: chmod -R 755 /var/www/manifoldcollective/
