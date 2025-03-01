@@ -1,8 +1,9 @@
 ---
 title: Welcome to the Draw Steel Content Forge!
 date: 2025-02-28T21:24:00
-author: ''
-categories: []
+author: tom-bombadil
+categories:
+  - guide
 thumbnail: /images/uploads/s-l-UM6vbyYfyJ0-unsplash.jpg
 description: Greetings, fellow adventurer! You've discovered the secret workshop where the tales and legends of Draw Steel come to life. This magical portal grants you the power to craft content that will appear on manifoldcollective.com – the digital tavern where Draw Steel enthusiasts gather.
 tags:
