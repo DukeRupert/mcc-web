@@ -1,5 +1,5 @@
 ---
-title: Welcome to the Draw Steel Content Forge - Part Deux!
+title: Duplicate
 date: 2025-02-28T21:24:00
 author: tom-bombadil
 categories:
