@@ -5,16 +5,16 @@ rssFullContent = true
 favicon = "/favicon.png"
 
 [footer]
-since = 2020
-customText = ""
+since = 2025
+customText = "Website by <a href='https://fireflysoftware.dev' target='_blank' style='color:#1072b9;'>Firefly Software</a></p>"
 
 [dateFormat]
 published = "Jan 02, 2006"
 lastUpdated = "Jan 02, 2006 15:04 MST"
 
 [sidebar]
-emoji = "🍥"
-subtitle = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+# emoji = "🍥"
+subtitle = "We are a community of passionate TTRPG designers, writers, editors, and playtesters collaborating to elevate tabletop roleplaying games."
 
 [sidebar.avatar]
 enabled = true
@@ -62,7 +62,7 @@ card = "summary_large_image"
 [defaultImage.opengraph]
 enabled = false
 local = false
-src = ""
+src = "img/logo-full-black.png"
 
 [colorScheme]
 toggle = true
@@ -76,8 +76,8 @@ enabled = true
 
 ## Comments
 [comments]
-enabled = true
-provider = "disqus"
+enabled = false
+provider = ""
 
 [comments.disqusjs]
 shortname = ""

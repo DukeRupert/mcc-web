@@ -1,69 +1,123 @@
-<img align="right" width="150" alt="logo" src="https://user-images.githubusercontent.com/5889006/190859553-5b229b4f-c476-4cbd-928f-890f5265ca4c.png">
+# Manifold Creator Collective Blog
 
-# Hugo Theme Stack Starter Template
+A responsive Hugo-powered blog platform for the Manifold Creator Collective (MCC) - a community of TTRPG designers, writers, editors, and playtesters collaborating to elevate tabletop roleplaying games.
 
-This is a quick start template for [Hugo theme Stack](https://github.com/CaiJimmy/hugo-theme-stack). It uses [Hugo modules](https://gohugo.io/hugo-modules/) feature to load the theme.
+## 🌐 About
 
-It comes with a basic theme structure and configuration. GitHub action has been set up to deploy the theme to a public GitHub page automatically. Also, there's a cron job to update the theme automatically everyday.
+This repository contains the source code for the Manifold Creator Collective's official blog site at [manifoldcollective.com](https://manifoldcollective.com). The site serves as a platform for MCC members to showcase their latest creations, coordinate playtesting opportunities, provide specialized services, and share industry insights.
 
-## Get started
+## 🛠️ Technology
 
-1. Click *Use this template*, and create your repository as `<username>.github.io` on GitHub.
-![Step 1](https://user-images.githubusercontent.com/5889006/156916624-20b2a784-f3a9-4718-aa5f-ce2a436b241f.png)
+- Built with [Hugo](https://gohugo.io/), a fast and modern static site generator
+- Implements responsive design for optimal viewing across all devices
+- Uses customized templates for TTRPG content presentation
+- Optimized for speed and search engine visibility
 
-2. Once the repository is created, create a GitHub codespace associated with it.
-![Create codespace](https://user-images.githubusercontent.com/5889006/156916672-43b7b6e9-4ffb-4704-b4ba-d5ca40ffcae7.png)
+## 🚀 Getting Started
 
-3. And voila! You're ready to go. The codespace has been configured with the latest version of Hugo extended, just run `hugo server` in the terminal and see your new site in action.
+### Prerequisites
 
-4. Check `config` folder for the configuration files. You can edit them to suit your needs. Make sure to update the `baseurl` property in `config/_default/config.toml` to your site's URL.
+- [Hugo](https://gohugo.io/getting-started/installing/) (Extended version recommended)
+- [Git](https://git-scm.com/downloads)
 
-5. Open Settings -> Pages. Change the build branch from `master` to `gh-pages`.
-![Build](https://github.com/namanh11611/hugo-theme-stack-starter/assets/16586200/12c763cd-bead-4923-b610-8788f388fcb5)
+### Local Development
 
-6. Once you're done editing the site, just commit it and push it. GitHub action will deploy the site automatically to GitHub page asociated with the repository.
-![GitHub action](https://user-images.githubusercontent.com/5889006/156916881-90b8bb9b-1925-4e60-9d7a-8026cda729bf.png)
+1. Clone the repository:
+   ```
+   git clone https://github.com/manifoldcollective/blog.git
+   cd blog
+   ```
 
+2. Install dependencies:
+   ```
+   npm install
+   ```
+
+3. Start the Hugo development server:
+   ```
+   hugo server -D
+   ```
+
+4. View the site at http://localhost:1313/
+
+### Creating Content
+
+To create a new blog post:
+
+```
+hugo new content/post/my-new-post.md
+```
+
+Edit the front matter and content of the new file. See the [Content Guidelines](#content-guidelines) section for more details.
+
+## 📝 Content Guidelines
+
+### Front Matter
+
+All posts should include the following front matter:
+
+```yaml
 ---
-
-In case you don't want to use GitHub codespace, you can also run this template in your local machine. **You need to install Git, Go and Hugo extended locally.**
-
-## Update theme manually
-
-Run:
-
-```bash
-hugo mod get -u github.com/CaiJimmy/hugo-theme-stack/v3
-hugo mod tidy
+title: Welcome to the Draw Steel Content Forge!
+description: Greetings, fellow adventurer! You've discovered the secret workshop where the tales and legends of Draw Steel come to life. This magical portal grants you the power to craft content that will appear on manifoldcollective.com – the digital tavern where Draw Steel enthusiasts gather.
+date: 2025-02-28T21:24:00
+author: tom-bombadil
+image: /images/uploads/s-l-UM6vbyYfyJ0-unsplash.jpg
+categories:
+  - guide
+tags:
+  - post
+  - intro
+---
 ```
 
-> This starter template has been configured with `v3` version of theme. Due to the limitation of Go module, once the `v4` or up version of theme is released, you need to update the theme manually. (Modifying `config/module.toml` file)
+### Licensing
 
-## Deploy to another static page hostings
+All content posted on the Manifold Creator Collective blog is licensed under [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/).
 
-If you want to build this site using another static page hosting, you need to make sure they have Go installed in the machine. 
+This means:
+- Content may be shared and adapted for non-commercial purposes
+- Attribution must be given to the original author
+- Derivative works must be shared under the same license
 
-<details>
-  <summary>Vercel</summary>
-  
-You need to overwrite build command to install manually Go:
+## 🤝 Contributing
+
+Contributions to improve the site's functionality are welcome. Please follow these steps:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📦 Deployment
+
+The site is automatically deployed via GitHub Actions whenever changes are pushed to the main branch.
+
+## 📋 Site Structure
 
 ```
-amazon-linux-extras install golang1.11 && hugo --gc --minify
+├── archetypes/        # Template files for new content
+├── assets/            # Unprocessed assets (SCSS, JS, etc.)
+├── config.toml        # Hugo configuration
+├── content/           # Markdown content files
+│   ├── posts/         # Blog posts
+│   └── pages/         # Static pages
+├── data/              # Site data files
+├── layouts/           # HTML templates
+├── static/            # Static files (images, CSS, JS)
+└── themes/            # Site themes
 ```
 
-![](https://user-images.githubusercontent.com/5889006/156917172-01e4d418-3469-4ffb-97e4-a905d28b8424.png)
+## ⚙️ Configuration
 
-If you are using Node.js 20, you need to overwrite the install command to install manually Go:
+Site configuration is managed through the `config.toml` file. See [Hugo Configuration](https://gohugo.io/getting-started/configuration/) for more details.
 
-```
-dnf install -y golang
-```
+## 📄 License
 
-![image](https://github.com/zhi-yi-huang/hugo-theme-stack-starter/assets/83860323/777c1109-dfc8-4893-9db7-1305ec027cf5)
+- **Code**: This project is licensed under the [MIT License](LICENSE)
+- **Content**: All blog content is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
+## 📞 Contact
 
-Make sure also to specify Hugo version in the environment variable `HUGO_VERSION` (Use the latest version of Hugo extended):
-
-![Environment variable](https://user-images.githubusercontent.com/5889006/156917212-afb7c70d-ab85-480f-8288-b15781a462c0.png)
-</details>
+For questions or support regarding this repository, please contact the MCC at [logan@fireflysoftware.com].

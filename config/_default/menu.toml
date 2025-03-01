@@ -7,18 +7,34 @@
 #icon = "home"
 #newtab = true
 
+[[main]]
+identifier = "creators"
+name = "Creators"
+url = "/creators"
+
+[main.params]
+icon = "writing"
+
 [[social]]
 identifier = "github"
 name = "GitHub"
-url = "https://github.com/CaiJimmy/hugo-theme-stack"
+url = "https://github.com/DukeRupert/manifold-creative-collective"
 
 [social.params]
 icon = "brand-github"
 
 [[social]]
-identifier = "twitter"
-name = "Twitter"
-url = "https://twitter.com"
+identifier = "x"
+name = "X"
+url = "https://x.com"
 
 [social.params]
-icon = "brand-twitter"
+icon = "brand-x"
+
+[[social]]
+identifier = "patreon"
+name = "Patreon"
+url = "https://patreon.com"
+
+[social.params]
+icon = "brand-patreon"
