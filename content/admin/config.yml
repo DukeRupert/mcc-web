@@ -2,7 +2,7 @@
 # Use DecapBridge auth (required)
 backend:
   name: github
-  repo: dukerupert/draw-steel
+  repo: dukerupert/manifold-creative-collective
   branch: master
   base_url: https://sveltia-cms-auth.logan-8c2.workers.dev
   # identity_url: https://auth.decapbridge.com/sites/6faa6cc2-e5df-434a-8436-15425850b2b0
@@ -18,10 +18,10 @@ backend:
     openAuthoring: Message {{message}} - {{author-name}} <{{author-login}}> via DecapBridge
 
 # Better Decap + Bridge logo (optional)
-logo_url: https://decapbridge.com/decapcms-with-bridge.svg
+logo_url: https://manifoldcollective.com/images/logo-full-black.png
 
 # Add site links in DecapCMS (optional)
-site_url: https://humble-space-giggle-4w4rrp4qpv535564-1313.app.github.dev
+site_url: https://manifoldcollective.com
 
 # Media and Public Folders
 media_folder: "static/images/uploads" # Media will be stored in this folder in the repo

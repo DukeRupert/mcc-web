@@ -1,8 +1,8 @@
 # Change baseurl before deploy
-baseurl = "https://demo.stack.jimmycai.com"
+baseurl = "https://manifoldcollective.com"
 languageCode = "en-us"
-title = "Hugo Theme Stack Starter"
-
+title = "The Manifold | Manifold Creator Collective (MCC) - TTRPG Designers & Resources"
+description = "The Manifold Creator Collective (MCC) is a community of passionate TTRPG designers, writers, editors, and playtesters collaborating to elevate tabletop roleplaying games. At The Manifold, we showcase our members' latest creations, coordinate playtesting opportunities, provide specialized services, and share industry insights."
 # Theme i18n support
 # Available values: en, fr, id, ja, ko, pt-br, zh-cn, zh-tw, es, de, nl, it, th, el, uk, ar
 defaultContentLanguage = "en"
@@ -12,7 +12,7 @@ defaultContentLanguage = "en"
 hasCJKLanguage = false
 
 # Change it to your Disqus shortname before using
-disqusShortname = "hugo-theme-stack"
+# disqusShortname = "hugo-theme-stack"
 
 [pagination]
 pagerSize = 5
