@@ -1,3 +1,71 @@
 /*
     You can add your own custom styles here.
 */
+
+/* Author Attribution Styles */
+.article-author {
+    display: flex;
+    margin: 1rem 0;
+    padding: 0.5rem 0;
+    border-top: 1px solid var(--card-separator-color, rgba(0, 0, 0, 0.1));
+    border-bottom: 1px solid var(--card-separator-color, rgba(0, 0, 0, 0.1));
+}
+
+.author-info {
+    display: flex;
+    align-items: center;
+}
+
+.author-avatar {
+    margin-right: 0.75rem;
+}
+
+.author-avatar img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.author-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.author-name {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+}
+
+.author-name svg {
+    width: 16px;
+    height: 16px;
+    margin-right: 0.5rem;
+}
+
+.author-name a {
+    color: var(--card-text-color-main, #4a4a4a);
+    text-decoration: none;
+}
+
+.author-name a:hover {
+    color: var(--link-hover-color, #3273dc);
+    text-decoration: underline;
+}
+
+.author-bio-short {
+    font-size: 0.9rem;
+    color: var(--card-text-color-secondary, #6a6a6a);
+    margin-top: 0.25rem;
+    line-height: 1.4;
+}
+
+/* Dark mode adjustments */
+[data-scheme="dark"] .author-name a {
+    color: var(--card-text-color-main, #e0e0e0);
+}
+
+[data-scheme="dark"] .author-bio-short {
+    color: var(--card-text-color-secondary, #b0b0b0);
+}
