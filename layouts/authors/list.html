@@ -1,0 +1,57 @@
+{{ define "main" }}
+<section class="section">
+    <div class="container">
+        <header>
+            <h1 class="section-title">{{ .Title }}</h1>
+            {{ with .Description }}
+                <div class="section-description">
+                    {{ . }}
+                </div>
+            {{ end }}
+        </header>
+        
+        <div class="authors-grid">
+            {{ range .Pages }}
+                <div class="author-card">
+                    <a href="{{ .RelPermalink }}" class="author-card-link">
+                        {{ if .Params.avatar }}
+                            <div class="author-avatar">
+                                <img src="{{ .Params.avatar }}" alt="{{ .Title }}">
+                            </div>
+                        {{ else }}
+                            <div class="author-avatar author-avatar-placeholder">
+                                {{ partial "helper/icon" "user" }}
+                            </div>
+                        {{ end }}
+                        
+                        <div class="author-info">
+                            <h2 class="author-name">{{ .Title }}</h2>
+                            
+                            {{ if .Params.bio }}
+                                <div class="author-bio-preview">
+                                    {{ $bioWords := split .Params.bio " " }}
+                                    {{ $shortBio := delimit (first 15 $bioWords) " " }}
+                                    {{ if gt (len $bioWords) 15 }}
+                                        {{ $shortBio = print $shortBio "..." }}
+                                    {{ end }}
+                                    <p>{{ $shortBio }}</p>
+                                </div>
+                            {{ end }}
+                            
+                            {{ if .Params.social }}
+                                <div class="author-social">
+                                    {{ range .Params.social }}
+                                        <a href="{{ .url }}" target="_blank" rel="noopener">
+                                            {{ partial "helper/icon" .name }}
+                                        </a>
+                                    {{ end }}
+                                </div>
+                            {{ end }}
+                        </div>
+                    </a>
+                </div>
+            {{ end }}
+        </div>
+    </div>
+</section>
+{{ end }}

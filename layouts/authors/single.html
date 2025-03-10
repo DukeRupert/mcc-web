@@ -1,0 +1,113 @@
+{{ define "main" }}
+<section class="section author-page">
+    <div class="container">
+        <div class="author-header">
+            <div class="author-profile">
+                {{ if .Params.avatar }}
+                    <div class="author-avatar">
+                        <img src="{{ .Params.avatar }}" alt="{{ .Title }}">
+                    </div>
+                {{ else }}
+                    <div class="author-avatar author-avatar-placeholder">
+                        {{ partial "helper/icon" "user" }}
+                    </div>
+                {{ end }}
+                
+                <div class="author-details">
+                    <h1 class="author-name">{{ .Title }}</h1>
+                    
+                    {{ if .Params.email }}
+                        <div class="author-email">
+                            {{ partial "helper/icon" "mail" }}
+                            <a href="mailto:{{ .Params.email }}">{{ .Params.email }}</a>
+                        </div>
+                    {{ end }}
+                    
+                    {{ if .Params.social }}
+                        <div class="author-social">
+                            {{ range .Params.social }}
+                                <a href="{{ .url }}" target="_blank" rel="noopener" title="{{ .name }}">
+                                    {{ partial "helper/icon" .name }}
+                                </a>
+                            {{ end }}
+                        </div>
+                    {{ end }}
+                </div>
+            </div>
+        </div>
+        
+        {{ if .Params.bio }}
+            <div class="author-bio">
+                <p>{{ .Params.bio }}</p>
+            </div>
+        {{ end }}
+        
+        {{ .Content }}
+        
+        <!-- Author's articles -->
+        <div class="author-articles">
+            <h2 class="author-articles-title">Articles by {{ .Title }}</h2>
+            
+            {{ $author_id := .File.ContentBaseName }}
+            {{ $articles := where .Site.RegularPages "Params.author" $author_id }}
+            
+            {{ if $articles }}
+                <div class="article-list">
+                    {{ range $articles }}
+                        <article class="article-card">
+                            <a class="article-link" href="{{ .RelPermalink }}">
+                                {{ if .Params.image }}
+                                    <div class="article-image">
+                                        <img src="{{ .Params.image }}" alt="{{ .Title }}">
+                                    </div>
+                                {{ end }}
+                                
+                                <div class="article-details">
+                                    {{ if .Params.categories }}
+                                        <div class="article-categories">
+                                            {{ range (.GetTerms "categories") }}
+                                                <span class="article-category" {{ with .Params.style }}style="background-color: {{ .background }}; color: {{ .color }};"{{ end }}>
+                                                    {{ .LinkTitle }}
+                                                </span>
+                                            {{ end }}
+                                        </div>
+                                    {{ end }}
+                                    
+                                    <h3 class="article-title">{{ .Title }}</h3>
+                                    
+                                    {{ with .Params.description }}
+                                        <div class="article-description">
+                                            {{ . }}
+                                        </div>
+                                    {{ end }}
+                                    
+                                    <div class="article-metadata">
+                                        {{ if not .Date.IsZero }}
+                                            <span class="article-date">
+                                                {{ partial "helper/icon" "date" }}
+                                                <time>{{ .Date | time.Format (or .Site.Params.dateFormat.published "Jan 02, 2006") }}</time>
+                                            </span>
+                                        {{ end }}
+                                        
+                                        {{ $showReadingTime := .Params.readingTime | default (.Site.Params.article.readingTime) }}
+                                        {{ if $showReadingTime }}
+                                            <span class="article-reading-time">
+                                                {{ partial "helper/icon" "clock" }}
+                                                <time>{{ T "article.readingTime" .ReadingTime }}</time>
+                                            </span>
+                                        {{ end }}
+                                    </div>
+                                </div>
+                            </a>
+                        </article>
+                    {{ end }}
+                </div>
+            {{ else }}
+                <div class="no-articles">
+                    <p>No articles found from this author.</p>
+                </div>
+            {{ end }}
+        </div>
+    </div>
+</section>
+{{ end }}
