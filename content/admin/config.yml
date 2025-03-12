@@ -24,7 +24,7 @@ logo_url: https://manifoldcollective.com/images/logo-full-black.png
 site_url: https://manifoldcollective.com
 
 # Media and Public Folders
-media_folder: "static/images/uploads" # Media will be stored in this folder in the repo
+media_folder: "assets/uploads" # Media will be stored in this folder in the repo
 public_folder: "/images/uploads" # The src attribute for uploaded media
 
 # Optional: publish mode

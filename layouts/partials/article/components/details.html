@@ -2,9 +2,10 @@
     {{ if .Params.categories }}
     <header class="article-category">
         {{ range (.GetTerms "categories") }}
-            <a href="{{ .RelPermalink }}" {{ with .Params.style }}style="background-color: {{ .background }}; color: {{ .color }};"{{ end }}>
-                {{ .LinkTitle }}
-            </a>
+        <a href="{{ .RelPermalink }}"
+            {{ with .Params.style }}style="background-color: {{ .background }}; color: {{ .color }};" {{ end }}>
+            {{ .LinkTitle }}
+        </a>
         {{ end }}
     </header>
     {{ end }}
@@ -14,7 +15,7 @@
                 {{- .Title -}}
             </a>
         </h2>
-    
+
         {{ with .Params.description }}
         <h3 class="article-subtitle">
             {{ . }}
@@ -28,58 +29,60 @@
         {{ $authorPath := print "authors/" .Params.author ".md" }}
         {{ $authorData := site.GetPage $authorPath }}
         {{ if $authorData }}
-            <div class="author-info">
-                {{ if $authorData.Params.avatar }}
-                <div class="author-avatar">
-                    <img src="{{ $authorData.Params.avatar }}" alt="{{ $authorData.Title }}" />
-                </div>
+        <div class="author-info">
+            <div class="author-avatar">
+                {{ with $authorData.Params.avatar }}
+                {{ $image := resources.Get . }}
+                {{ $resized := $image.Resize "40x40" }}
+                <img src="{{ $resized.RelPermalink }}" alt="{{ $authorData.Title }}" width="40" height="40" />
                 {{ end }}
-                <div class="author-details">
-                    <span class="author-name">
-                        <a href="{{ $authorData.RelPermalink }}">{{ $authorData.Title }}</a>
-                    </span>
-                </div>
             </div>
+            <div class="author-details">
+                <span class="author-name">
+                    <a href="{{ $authorData.RelPermalink }}">{{ $authorData.Title }}</a>
+                </span>
+            </div>
+        </div>
         {{ else }}
-            <span class="author-name">
-                {{ partial "helper/icon" "user" }}
-                {{ .Params.author }}
-            </span>
+        <span class="author-name">
+            {{ partial "helper/icon" "user" }}
+            {{ .Params.author }}
+        </span>
         {{ end }}
     </div>
     {{ end }}
-    
+
     {{ $showReadingTime := .Params.readingTime | default (.Site.Params.article.readingTime) }}
     {{ $showDate := not .Date.IsZero }}
     {{ $showFooter := or $showDate $showReadingTime }}
     {{ if $showFooter }}
     <footer class="article-time">
         {{ if $showDate }}
-            <div>
-                {{ partial "helper/icon" "date" }}
-                <time class="article-time--published">
-                    {{- .Date | time.Format (or .Site.Params.dateFormat.published "Jan 02, 2006") -}}
-                </time>
-            </div>
+        <div>
+            {{ partial "helper/icon" "date" }}
+            <time class="article-time--published">
+                {{- .Date | time.Format (or .Site.Params.dateFormat.published "Jan 02, 2006") -}}
+            </time>
+        </div>
         {{ end }}
         {{ if $showReadingTime }}
-            <div>
-                {{ partial "helper/icon" "clock" }}
-                <time class="article-time--reading">
-                    {{ T "article.readingTime" .ReadingTime }}
-                </time>
-            </div>
+        <div>
+            {{ partial "helper/icon" "clock" }}
+            <time class="article-time--reading">
+                {{ T "article.readingTime" .ReadingTime }}
+            </time>
+        </div>
         {{ end }}
     </footer>
     {{ end }}
     {{ if .IsTranslated }}
-        <footer class="article-translations">
-            {{ partial "helper/icon" "language" }}
-            <div>
-                {{ range .Translations }}
-                    <a href="{{ .Permalink }}" class="link">{{ .Language.LanguageName }}</a>
-                {{ end }}
-            </div>
-        </footer>
+    <footer class="article-translations">
+        {{ partial "helper/icon" "language" }}
+        <div>
+            {{ range .Translations }}
+            <a href="{{ .Permalink }}" class="link">{{ .Language.LanguageName }}</a>
+            {{ end }}
+        </div>
+    </footer>
     {{ end }}
 </div>
