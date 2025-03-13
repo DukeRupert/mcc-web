@@ -62,57 +62,94 @@
 {{- end -}}
 
 <!-- Improved Creators Grid -->
-<section class="creators-grid">
+<section class="grid grid-cols-1 gap-6 ">
     {{/* List only pages that are not a subsection */}}
     {{ $paginator := .Paginate $pages }}
     {{ range $paginator.Pages }}
-    <div class="creator-card">
-        <div class="creator-header">
-            {{ with .Params.avatar }}
-            {{ $image := resources.Get . }}
+    <div class="card card-side bg-base-100 shadow-sm">
+        {{ with .Params.avatar }}
+        {{ $image := resources.Get . }}
+        {{ if $image }}
+        {{ $resized := $image.Fill "200x280 Center" }}
+        <figure>
+            <img src="{{ $resized.RelPermalink }}" alt="{{ $.Title }}" width="200" height="280" />
+        </figure>
+        {{ end }}
+        {{ end }}
+        <div class="card-body">
+            <h2 class="card-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+            {{ with .Params.email }}
+            <a href="mailto:{{ . }}" class="creator-email">
+                {{ partial "helper/icon" "mail" }}
+                <span>{{ . }}</span>
+            </a>
+            {{ end }}
+            {{ with .Params.bio }}
 
-            {{ if $image }}
-            {{ $resized := $image.Fill "80x80 Center" }}
-            <div class="creator-avatar">
-                <img src="{{ $resized.RelPermalink }}" alt="{{ $.Title }}" width="80" height="80" />
+            <p>{{ . | truncate 120 }}</p>
+
+            {{ end }}
+            <div class="card-actions justify-end">
+                {{/* Get count of posts by this creator */}}
+                {{ $authorName := .Title }}
+                {{ $authorPosts := (where $.Site.RegularPages "Params.author" .File.ContentBaseName) }}
+                {{ $postCount := len $authorPosts }}
+                <div class="post-count">
+                    {{ partial "helper/icon" "writing" }}
+                    <span>{{ $postCount }} {{ cond (eq $postCount 1) "post" "posts" }}</span>
+                </div>
+
+                <a href="{{ .RelPermalink }}" class="btn btn-primary">View profile</a>
             </div>
-            {{ else }}
-            <div class="creator-avatar">
-                {{ partial "helper/icon" "writing" }}
+        </div>
+    </div>
+    <!-- <div class="card bg-base-100 w-96 shadow-sm">
+        <div class="card-body">
+            <div>
+                {{ with .Params.avatar }}
+                {{ $image := resources.Get . }}
+
+                {{ if $image }}
+                {{ $resized := $image.Fill "80x80 Center" }}
+                <div class="avatar">
+                    <div class="w-24 rounded-xl">
+                        <img src="{{ $resized.RelPermalink }}" alt="{{ $.Title }}" width="60" height="60" />
+                    </div>
+                </div>
+                {{ end }}
+                {{ end }}
+                <div class="creator-name">
+                    <h3 class="card-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+                    {{ with .Params.email }}
+                    <a href="mailto:{{ . }}" class="creator-email">
+                        {{ partial "helper/icon" "mail" }}
+                        <span>{{ . }}</span>
+                    </a>
+                    {{ end }}
+                </div>
+            </div>
+
+            {{ with .Params.bio }}
+            <div class="creator-bio">
+                <p>{{ . | truncate 180 }}</p>
+                {{ if gt (len .) 180 }}
+                <a href="{{ $.RelPermalink }}" class="read-more">Read more</a>
+                {{ end }}
             </div>
             {{ end }}
-            {{ end }}
-            <div class="creator-name">
-                <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-                {{ with .Params.email }}
-                <a href="mailto:{{ . }}" class="creator-email">
-                    {{ partial "helper/icon" "mail" }}
-                    <span>{{ . }}</span>
+
+            {{ with .Params.social }}
+            {{ if gt (len .) 0 }}
+            <div class="creator-social">
+                {{ range . }}
+                <a href="{{ .url }}" target="_blank" rel="noopener" title="{{ .name }}">
+                    {{ partial "helper/icon" .icon }}
                 </a>
                 {{ end }}
             </div>
-        </div>
-
-        {{ with .Params.bio }}
-        <div class="creator-bio">
-            <p>{{ . | truncate 180 }}</p>
-            {{ if gt (len .) 180 }}
-            <a href="{{ $.RelPermalink }}" class="read-more">Read more</a>
+            {{ end }}
             {{ end }}
         </div>
-        {{ end }}
-
-        {{ with .Params.social }}
-        {{ if gt (len .) 0 }}
-        <div class="creator-social">
-            {{ range . }}
-            <a href="{{ .url }}" target="_blank" rel="noopener" title="{{ .name }}">
-                {{ partial "helper/icon" .icon }}
-            </a>
-            {{ end }}
-        </div>
-        {{ end }}
-        {{ end }}
 
         <div class="creator-footer">
             {{/* Get count of posts by this creator */}}
@@ -126,7 +163,7 @@
 
             <a href="{{ .RelPermalink }}" class="btn btn-primary">View profile</a>
         </div>
-    </div>
+    </div> -->
     {{ end }}
 </section>
 {{- partial "pagination.html" . -}}
