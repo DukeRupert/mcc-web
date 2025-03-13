@@ -1,4 +1,4 @@
-<header class="article-header">
+<header class="rounded-[inherit]">
     {{- $image := partialCached "helper/image" (dict "Context" . "Type" "article") .RelPermalink "article" -}}
     {{ if $image.exists }}
         <figure>

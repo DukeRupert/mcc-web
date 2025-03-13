@@ -1,6 +1,6 @@
 <div class="card-body">
     {{ if .Params.categories }}
-    <header class="article-category">
+    <header>
         {{ range (.GetTerms "categories") }}
         <a href="{{ .RelPermalink }}" class="badge {{ with .Params.style }}badge-{{.}}{{ end }}">
             {{ .LinkTitle }}
@@ -10,7 +10,7 @@
     {{ end }}
     <div>
         <h2 class="card-title">
-            <a href="{{ .RelPermalink }}">
+            <a class="link link-primary" href="{{ .RelPermalink }}">
                 {{- .Title -}}
             </a>
         </h2>
@@ -41,21 +41,21 @@
                     <img src="{{ $resized.RelPermalink }}" alt="{{ $authorData.Title }}" width="40" height="40" />
                     {{ end }}
                 </div>
-                <div class="author-details">
-                    <span class="author-name">
-                        <a href="{{ $authorData.RelPermalink }}">{{ $authorData.Title }}</a>
+                <div>
+                    <span>
+                        <a class="link" href="{{ $authorData.RelPermalink }}">{{ $authorData.Title }}</a>
                     </span>
                 </div>
             </div>
             {{ else }}
-            <span class="author-name">
+            <span>
                 {{ partial "helper/icon" "user" }}
                 {{ .Params.author }}
             </span>
             {{ end }}
         </div>
         {{ end }}
-        <div class="flex gap-6">
+        <div class="flex gap-6 text-sm text-secondary">
             {{ if $showDate }}
         <div class="flex gap-6 items-center">
             {{ partial "helper/icon" "calender" }}
