@@ -66,7 +66,7 @@
                                     {{ if .Params.categories }}
                                         <div class="article-categories">
                                             {{ range (.GetTerms "categories") }}
-                                                <span class="article-category" {{ with .Params.style }}style="background-color: {{ .background }}; color: {{ .color }};"{{ end }}>
+                                                <span class="badge {{ with .Params.style }}badge-{{ . }}{{ end }}">
                                                     {{ .LinkTitle }}
                                                 </span>
                                             {{ end }}
