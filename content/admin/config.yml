@@ -32,9 +32,9 @@ public_folder: "/images/uploads" # The src attribute for uploaded media
 
 # Collections - customize these based on your site's structure
 collections:
-  - name: "author" # Used in routes, e.g., /admin/collections/author
-    label: "Authors" # Used in the UI
-    folder: "content/authors" # The path to the folder where the documents are stored
+  - name: "creator" # Used in routes, e.g., /admin/collections/author
+    label: "Creators" # Used in the UI
+    folder: "content/creators" # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
     slug: "{{slug}}" # Filename template, using just the slug
     fields: # The fields for each document
