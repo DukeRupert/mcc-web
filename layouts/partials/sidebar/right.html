@@ -1,7 +1,7 @@
 {{- $scope := default "homepage" .Scope -}}
 {{- $context := .Context -}}
 {{- with (index .Context.Site.Params.widgets $scope) -}}
-    <aside class="w-full hidden lg:flex flex-col gap-10 order-last max-w-[25%] lg:pt-12 lg:pb-12 md:sticky top-0">
+    <aside class="w-full hidden lg:flex flex-col gap-10 order-last max-w-sm lg:pt-12 lg:pb-12 md:sticky top-0">
         {{ range $widget := . }}
             {{ if templates.Exists (printf "partials/widget/%s.html" .type) }}
                 <!-- Ensure that the `params` is not nil -->
