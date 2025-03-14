@@ -1,0 +1,20 @@
+{{- $context := .Context -}}
+{{- $limit := default 10 .Params.limit -}}
+<section class="card card-sm">
+    <div class="card-body">
+        <div class="flex gap-2">
+            <div class="badge badge-lg">
+                {{ partial "helper/icon" "categories" }}
+            </div>
+            <h2 class="card-title">{{ T "widget.categoriesCloud.title" }}</h2>
+        </div>
+
+        <ul class="tagCloud-tags">
+            {{ range first $limit $context.Site.Taxonomies.categories.ByCount }}
+            <a class="link" href="{{ .Page.RelPermalink }}" class="font_size_{{ .Count }}">
+                <li class="badge badge-soft badge-primary badge-lg">{{ .Page.Title }}</li>
+            </a>
+            {{ end }}
+        </ul>
+    </div>
+</section>

@@ -1,0 +1,39 @@
+{{- $query := first 1 (where .Context.Site.Pages "Layout" "==" "archives") -}}
+{{- $context := .Context -}}
+{{- $limit := default 5 .Params.limit -}}
+{{- if $query -}}
+{{- $archivesPage := index $query 0 -}}
+<section class="card card-sm">
+    <div class="card-body">
+        <div class="flex gap-2">
+            <div class="badge badge-lg">
+                {{ partial "helper/icon" "infinity" }}
+            </div>
+            <h2 class="card-title">{{ T "widget.archives.title" }}</h2>
+        </div>
+    
+        {{ $pages := where $context.Site.RegularPages "Type" "in" $context.Site.Params.mainSections }}
+        {{ $notHidden := where $context.Site.RegularPages "Params.hidden" "!=" true }}
+        {{ $filtered := ($pages | intersect $notHidden) }}
+        {{ $archives := $filtered.GroupByDate "2006" }}
+    
+        <ul class="list bg-base-100 rounded-box shadow-md">
+            {{ range $index, $item := first (add $limit 1) ($archives) }}
+            {{- $id := lower (replace $item.Key " " "-") -}}
+            <a href="{{ $archivesPage.RelPermalink }}#{{ $id }}">
+                <li class="list-row">
+                    {{ if eq $index $limit }}
+                    <div id="year">{{ T "widget.archives.more" }}</div>
+                    {{ else }}
+                    <div id="year">{{ .Key }}</div>
+                    <div class="flex justify-end text-secondary" id="count">{{ len $item.Pages }}</div>
+                    {{ end }}
+                </li>
+            </a>
+            {{ end }}
+        </ul>
+    </div>
+</section>
+{{- else -}}
+{{- warnf "Archives page not found. Create a page with layout: archives." -}}
+{{- end -}}

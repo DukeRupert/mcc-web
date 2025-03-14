@@ -8,7 +8,7 @@
         {{ end }}
     </header>
     {{ end }}
-    <div>
+    <div class="mt-2">
         <h2 class="card-title">
             <a class="link link-primary" href="{{ .RelPermalink }}">
                 {{- .Title -}}
@@ -16,9 +16,9 @@
         </h2>
 
         {{ with .Params.description }}
-        <h3>
+        <p class="mt-2">
             {{ . }}
-        </h3>
+        </p>
         {{ end }}
     </div>
 
@@ -26,14 +26,14 @@
     {{ $showDate := not .Date.IsZero }}
     {{ $showFooter := or $showDate $showReadingTime }}
     {{ if $showFooter }}
-    <footer class="mt-4 card-actions items-center justify-between">
+    <footer class="mt-4 card-actions items-center justify-end">
         <!-- Author Attribution Section -->
         {{ if .Params.author }}
-        <div id="article-author">
+        <div id="article-author" class="mr-auto">
             {{ $authorPath := print "authors/" .Params.author ".md" }}
             {{ $authorData := site.GetPage $authorPath }}
             {{ if $authorData }}
-            <div class="flex items-center gap-6">
+            <div class="flex items-center gap-2">
                 <div class="rounded-full">
                     {{ with $authorData.Params.avatar }}
                     {{ $image := resources.Get . }}
@@ -47,31 +47,26 @@
                     </span>
                 </div>
             </div>
-            {{ else }}
-            <span>
-                {{ partial "helper/icon" "user" }}
-                {{ .Params.author }}
-            </span>
             {{ end }}
         </div>
         {{ end }}
-        <div class="flex gap-6 text-sm text-secondary">
+        <div class="flex gap-6 text-sm">
             {{ if $showDate }}
-        <div class="flex gap-6 items-center">
-            {{ partial "helper/icon" "calender" }}
-            <time class="article-time--published">
-                {{- .Date | time.Format (or .Site.Params.dateFormat.published "Jan 02, 2006") -}}
-            </time>
-        </div>
-        {{ end }}
-        {{ if $showReadingTime }}
-        <div class="flex gap-6 items-center">
-            {{ partial "helper/icon" "clock" }}
-            <time class="article-time--reading">
-                {{ T "article.readingTime" .ReadingTime }}
-            </time>
-        </div>
-        {{ end }}
+            <div class="flex gap-2 items-center">
+                {{ partial "helper/icon" "calender" }}
+                <time class="article-time--published">
+                    {{- .Date | time.Format (or .Site.Params.dateFormat.published "Jan 02, 2006") -}}
+                </time>
+            </div>
+            {{ end }}
+            {{ if $showReadingTime }}
+            <div class="flex gap-2 items-center">
+                {{ partial "helper/icon" "clock" }}
+                <time class="article-time--reading">
+                    {{ T "article.readingTime" .ReadingTime }}
+                </time>
+            </div>
+            {{ end }}
         </div>
     </footer>
     {{ end }}
