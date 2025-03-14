@@ -1,0 +1,22 @@
+{{- with .Params.skills -}}
+<div class="skills-container">
+    <h3 class="skills-heading">Skills</h3>
+    <ol class="skills-list mx-auto menu menu-sm menu-horizontal bg-base-200 rounded-box mt-6">
+        {{ range . }}
+        <li class="skill-item">
+            <span class="skill-badge tooltip" data-tip="{{ . }}">
+                {{ $iconName := lower . | urlize }}
+                {{ $iconPath := printf "assets/icons/brand-%s.svg" $iconName }}
+                {{ if fileExists $iconPath }}
+                {{ $icon := resources.Get $iconPath }}
+                <div class="skill-icon">{{ $icon.Content | safeHTML }}</div>
+                {{ else }}
+                {{ $fallbackIcon := resources.Get "assets/icons/brand-other.svg" }}
+                <div class="skill-icon" title="{{ . }}">{{ $fallbackIcon.Content | safeHTML }}</div>
+                {{ end }}
+            </span>
+        </li>
+        {{ end }}
+    </ol>
+</div>
+{{- end -}}

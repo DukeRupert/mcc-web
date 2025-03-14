@@ -4,7 +4,7 @@
     {{ $filtered := ($pages | intersect $notHidden) }}
     {{ $pag := .Paginate ($filtered) }}
 
-    <section class="flex flex-col gap-10">
+    <section class="grid grid-cols-1 gap-6 max-w-4xl mx-auto">
         {{ range $index, $element := $pag.Pages }}
             {{ partial "article-list/default" . }}
         {{ end }}

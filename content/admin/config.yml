@@ -42,13 +42,22 @@ collections:
       - {label: "Bio", name: "bio", widget: "text"}
       - {label: "Avatar", name: "avatar", widget: "image", required: false}
       - {label: "Email", name: "email", widget: "string", required: false}
+      - label: "Skills"
+        name: "skills"
+        widget: "list"
+        required: false
+        hint: "Add your creative skills and expertise"
+        min: 0
+        max: 6
+        add_to_top: true
+        default: []
       - label: "Social Media"
         name: "social"
         widget: "list"
         summary: "{{fields.platform}} - {{fields.url}}"
         required: false
         fields:
-          - {label: "Platform", name: "platform", widget: "select", options: ["twitter", "facebook", "instagram", "github", "linkedin", "patreon", "itch.io", "discord", "youtube", "twitch", "website", "other"], default: "website"}
+          - {label: "Platform", name: "platform", widget: "select", options: ["x", "facebook", "instagram", "github", "linkedin", "patreon", "itch.io", "discord", "youtube", "twitch", "website", "other"], default: "website"}
           - {label: "URL", name: "url", widget: "string"}
           - {label: "Display Text", name: "display_text", widget: "string", required: false, hint: "Optional text to display instead of the URL"}
 

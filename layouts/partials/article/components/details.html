@@ -15,11 +15,11 @@
             </a>
         </h2>
 
-        {{ with .Params.description }}
+        <!-- {{ with .Params.description }}
         <p class="mt-2">
             {{ . }}
         </p>
-        {{ end }}
+        {{ end }} -->
     </div>
 
     {{ $showReadingTime := .Params.readingTime | default (.Site.Params.article.readingTime) }}

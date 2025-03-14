@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 @plugin "daisyui" {
-    themes: nord --default, abyss --prefersdark, nord, abyss;
+    themes: light --default, abyss --prefersdark, nord, abyss;
 }
 
 @source "hugo_stats.json";

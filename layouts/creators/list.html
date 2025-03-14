@@ -2,7 +2,6 @@
 <header class="flex flex-col p-2 gap-5">
     <div>
         <div class="prose prose-lg section-details">
-            <!-- <h3 class="section-count">{{ T "list.page" (len .Pages) }}</h3> -->
             <h1>{{ .Title }}</h1>
             {{ with .Params.description }}
             <p>{{ . }}</p>
@@ -54,44 +53,16 @@
 </aside>
 {{- end -}}
 
-<!-- Improved Creators Grid -->
+<!-- Creators Grid Using Partial -->
 <section>
-    <ul class="list bg-base-100 rounded-box shadow-md">
-        {{/* List only pages that are not a subsection */}}
+    <ul class="list bg-base-100 rounded-box shadow-md gap-4 p-4">
         {{ $paginator := .Paginate $pages }}
         {{ range $paginator.Pages }}
-        <li class="card md:card-side">
-            {{ with .Params.avatar }}
-            {{ $image := resources.Get . }}
-            {{ if $image }}
-            {{ $resized := $image.Fill "500x300 Center" }}
-            <figure>
-                <img src="{{ $resized.RelPermalink }}" alt="{{ $.Title }}" width="500" height="300" />
-            </figure>
-            {{ end }}
-            {{ end }}
-            <div class="card-body">
-                <h2 class="card-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
-                {{ with .Params.bio }}
-                <p>{{ . | truncate 120 }}</p>
-                {{ end }}
-                <div class="card-actions mt-4">
-                    {{/* Get count of posts by this creator */}}
-                    {{ $authorName := .Title }}
-                    {{ $authorPosts := (where $.Site.RegularPages "Params.author" .File.ContentBaseName) }}
-                    {{ $postCount := len $authorPosts }}
-                    <div class="flex gap-2 mr-auto">
-                        {{ partial "helper/icon" "writing" }}
-                        <span>{{ $postCount }} {{ cond (eq $postCount 1) "post" "posts" }}</span>
-                    </div>
-                    <a class="link" href="{{ .RelPermalink }}">View profile</button>
-                </div>
-            </div>
-            </div>
-        </li>
+            {{ partial "creator/card" . }}
         {{ end }}
     </ul>
 </section>
+
 {{- partial "pagination.html" . -}}
 {{ partialCached "footer/footer" . }}
 {{ end }}

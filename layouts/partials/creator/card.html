@@ -1,0 +1,49 @@
+{{- $creator := . -}}
+<li class="card md:card-side bg-base-100 hover:shadow-lg transition-shadow duration-300">
+    {{ with .Params.avatar }}
+    {{ $image := resources.Get . }}
+    {{ if $image }}
+    {{ $resized := $image.Fill "500x300 Center" }}
+    <figure class="relative overflow-hidden">
+        <img src="{{ $resized.RelPermalink }}" alt="{{ $creator.Title }}" width="500" height="300" class="object-cover h-full" />
+    </figure>
+    {{ else }}
+    <figure class="bg-base-200 flex items-center justify-center" style="min-width: 200px; min-height: 200px;">
+        {{ partial "helper/icon" "user" }}
+    </figure>
+    {{ end }}
+    {{ else }}
+    <figure class="bg-base-200 flex items-center justify-center" style="min-width: 200px; min-height: 200px;">
+        {{ partial "helper/icon" "user" }}
+    </figure>
+    {{ end }}
+    
+    <div class="card-body">
+        <h2 class="card-title">
+            <a href="{{ .RelPermalink }}" class="hover:text-primary">{{ .Title }}</a>
+        </h2>
+        
+        {{ with .Params.bio }}
+        <p class="text-base-content/80">{{ . | truncate 120 }}</p>
+        {{ end }}
+        
+        {{/* Display skills if available */}}
+        {{ if .Params.skills }}
+        <div class="mt-2">
+            {{ partial "creator/skills" . }}
+        </div>
+        {{ end }}
+        
+        <div class="card-actions justify-between items-center mt-auto">
+            {{/* Get count of posts by this creator */}}
+            {{ $authorPosts := (where $.Site.RegularPages "Params.author" .File.ContentBaseName) }}
+            {{ $postCount := len $authorPosts }}
+            <div class="flex gap-2 items-center text-sm">
+                {{ partial "helper/icon" "writing" }}
+                <span>{{ $postCount }} {{ cond (eq $postCount 1) "post" "posts" }}</span>
+            </div>
+            
+            <a href="{{ .RelPermalink }}" class="btn btn-sm btn-primary">View profile</a>
+        </div>
+    </div>
+</li>
