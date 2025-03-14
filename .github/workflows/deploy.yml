@@ -29,38 +29,19 @@ jobs:
           hugo-version: 'latest'
           extended: true
       
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-      
-      - name: Install TailwindCSS in project directory
+      - name: Install Tailwind CSS Standalone CLI
         run: |
-          # Install TailwindCSS in the project directory
-          npm init -y
-          npm install tailwindcss postcss autoprefixer
-          npx tailwindcss init
+          # Download the latest version of the Tailwind CSS standalone CLI
+          curl -sLO https://github.com/tailwindlabs/tailwindcss/releases/latest/download/tailwindcss-linux-x64
+          chmod +x tailwindcss-linux-x64
           
-          # Create a simple tailwind.config.js if it doesn't exist
-          if [ ! -f "tailwind.config.js" ]; then
-            echo "module.exports = {
-              content: ['./layouts/**/*.html', './content/**/*.md'],
-              theme: { extend: {} },
-              plugins: [],
-            }" > tailwind.config.js
-          fi
+          # Move to a location in PATH
+          sudo mv tailwindcss-linux-x64 /usr/local/bin/tailwindcss
           
-          # Create a postcss.config.js file if it doesn't exist
-          if [ ! -f "postcss.config.js" ]; then
-            echo "module.exports = {
-              plugins: {
-                tailwindcss: {},
-                autoprefixer: {},
-              }
-            }" > postcss.config.js
-          fi
+          # Verify installation
+          tailwindcss --help
           
-          # Print the directory structure for debugging
+          # Print current directory structure for debugging
           echo "Current directory structure:"
           ls -la
       
