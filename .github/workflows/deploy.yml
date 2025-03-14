@@ -2,7 +2,7 @@ name: Build and Deploy Hugo Site
 on:
   # Run daily at midnight UTC
   schedule:
-    - cron: '0 0 * * *'  # Fixed cron syntax
+    - cron: '0 0 * * *'
   
   # Run when a webhook is triggered
   repository_dispatch:
@@ -34,8 +34,35 @@ jobs:
         with:
           node-version: '18'
       
-      - name: Install TailwindCSS and CLI
-        run: npm install -g tailwindcss @tailwindcss/cli
+      - name: Install TailwindCSS in project directory
+        run: |
+          # Install TailwindCSS in the project directory
+          npm init -y
+          npm install tailwindcss postcss autoprefixer
+          npx tailwindcss init
+          
+          # Create a simple tailwind.config.js if it doesn't exist
+          if [ ! -f "tailwind.config.js" ]; then
+            echo "module.exports = {
+              content: ['./layouts/**/*.html', './content/**/*.md'],
+              theme: { extend: {} },
+              plugins: [],
+            }" > tailwind.config.js
+          fi
+          
+          # Create a postcss.config.js file if it doesn't exist
+          if [ ! -f "postcss.config.js" ]; then
+            echo "module.exports = {
+              plugins: {
+                tailwindcss: {},
+                autoprefixer: {},
+              }
+            }" > postcss.config.js
+          fi
+          
+          # Print the directory structure for debugging
+          echo "Current directory structure:"
+          ls -la
       
       - name: Build site
         run: hugo --minify
