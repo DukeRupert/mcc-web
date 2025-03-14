@@ -29,6 +29,20 @@ jobs:
           hugo-version: 'latest'
           extended: true
       
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      
+      - name: Install DaisyUI
+        run: |
+          # Install DaisyUI as a dev dependency
+          npm i -D daisyui@latest
+          
+          # Print installed packages for debugging
+          echo "Installed Node packages:"
+          npm list --depth=0
+      
       - name: Install Tailwind CSS Standalone CLI
         run: |
           # Download the latest version of the Tailwind CSS standalone CLI
@@ -40,10 +54,6 @@ jobs:
           
           # Verify installation
           tailwindcss --help
-          
-          # Print current directory structure for debugging
-          echo "Current directory structure:"
-          ls -la
       
       - name: Build site
         run: hugo --minify
