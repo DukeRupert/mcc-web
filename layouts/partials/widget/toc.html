@@ -1,0 +1,12 @@
+<section class="bg-base-100 shadow flex flex-col text-base-content rounded-box overflow-hidden mb-6">
+    <div class="p-4 border-b border-base-300 flex items-center gap-2">
+        <div class="text-primary">
+            {{ partial "helper/icon" "hash" }}
+        </div>
+        <h2 class="font-bold">{{ T "article.tableOfContents" }}</h2>
+    </div>
+    
+    <div class="p-4 prose prose-sm">
+        {{ .Context.TableOfContents }}
+    </div>
+</section>
