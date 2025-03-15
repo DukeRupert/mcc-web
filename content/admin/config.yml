@@ -2,7 +2,7 @@
 # Use DecapBridge auth (required)
 backend:
   name: github
-  repo: dukerupert/manifold-creative-collective
+  repo: manifold-creator-collective/mcc-web
   branch: master
   base_url: https://sveltia-cms-auth.logan-8c2.workers.dev
   # identity_url: https://auth.decapbridge.com/sites/6faa6cc2-e5df-434a-8436-15425850b2b0
