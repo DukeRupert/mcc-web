@@ -4,8 +4,7 @@ backend:
   repo: DukeRupert/mcc-web
   branch: main
   identity_url: https://auth.decapbridge.com/sites/fc890f91-2f54-4dad-9f4d-14e14f77ddab
-  gateway_url: https://gateway.decapbridge.com  name: github
-
+  gateway_url: https://gateway.decapbridge.com
   # Quickly see who did what (optional)
   commit_messages:
     create: Create {{collection}} "{{slug}}" - {{author-name}} <{{author-login}}>
@@ -16,7 +15,7 @@ backend:
     openAuthoring: Message {{message}} - {{author-name}} <{{author-login}}>
 
 # Better Decap + Bridge logo (optional)
-logo_url: https://manifoldcollective.com/images/logo-full-black.png
+logo_url: https://decapbridge.com/decapcms-with-bridge.svg
 
 # Add site links in DecapCMS (optional)
 site_url: https://manifoldcollective.com
