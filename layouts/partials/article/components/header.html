@@ -1,10 +1,10 @@
 {{- $article := . -}}
 {{- $image := partialCached "helper/image" (dict "Context" . "Type" "article") .RelPermalink "article" -}}
 {{ if $image.exists }}
-<figure class="aspect-[16/9] overflow-hidden">
     <a href="{{ .RelPermalink }}" aria-label="{{ .Title }}">
+<figure class="aspect-[16/9] overflow-hidden">
         {{ if $image.resource }}
-        {{- $thumbnail := $image.resource.Fill "400x225 Center" -}}
+        {{- $thumbnail := $image.resource.Fill "800x450 Center" -}}
         <img src="{{ $thumbnail.RelPermalink }}" width="{{ $thumbnail.Width }}" height="{{ $thumbnail.Height }}"
             alt="Featured image of {{ .Title }}"
             class="w-full h-full object-cover transition-transform duration-300 hover:scale-105" loading="lazy" />
@@ -12,8 +12,8 @@
         <img src="{{ $image.permalink }}" alt="Featured image of {{ .Title }}"
             class="w-full h-full object-cover transition-transform duration-300 hover:scale-105" loading="lazy" />
         {{ end }}
-    </a>
 </figure>
+    </a>
 {{ end }}
 
 <div class="card-body p-4">
@@ -37,43 +37,59 @@
 
     <div class="card-actions flex-col gap-3 mt-auto pt-3">
         <!-- Author information -->
-        {{ if .Params.author }}
-        <div class="w-full flex items-center gap-2">
-            {{ $authorSlug := .Params.author }}
-            {{ $authorPath := print "content/creators/" $authorSlug ".md" }}
-            {{ if fileExists $authorPath }}
-            {{ $authorData := site.GetPage (print "creators/" $authorSlug) }}
-            {{ if $authorData }}
-            <div class="flex items-center gap-2 mr-auto">
-                <div class="avatar">
-                    <div class="w-8 h-8 rounded-full overflow-hidden">
-                        {{ with $authorData.Params.avatar }}
+{{ if .Params.author }}
+<div class="w-full flex items-center gap-2">
+    {{ $authorSlug := .Params.author }}
+    {{ $authorPath := print "content/creators/" $authorSlug ".md" }}
+    {{ if fileExists $authorPath }}
+        {{ $authorData := site.GetPage (print "creators/" $authorSlug) }}
+        {{ if $authorData }}
+        <div class="flex items-center gap-2 mr-auto">
+            <div class="avatar">
+                <div class="w-8 h-8 rounded-full overflow-hidden">
+                    {{ with $authorData.Params.avatar }}
+                        {{/* Try multiple paths to find the avatar image */}}
                         {{ $image := resources.Get . }}
+                        
+                        {{/* If not found, check if it's a CMS upload path */}}
+                        {{ if not $image }}
+                            {{ if hasPrefix . "/images/uploads/" }}
+                                {{ $assetPath := replace . "/images/uploads/" "uploads/" }}
+                                {{ $image = resources.Get $assetPath }}
+                            {{ end }}
+                        {{ end }}
+                        
+                        {{/* If still not found, try without leading slash */}}
+                        {{ if not $image }}
+                            {{ if hasPrefix . "/" }}
+                                {{ $noLeadingSlash := strings.TrimPrefix "/" . }}
+                                {{ $image = resources.Get $noLeadingSlash }}
+                            {{ end }}
+                        {{ end }}
+                        
                         {{ if $image }}
-                        {{ $resized := $image.Fill "32x32 Center" }}
-                        <img src="{{ $resized.RelPermalink }}" alt="{{ $authorData.Title }}" width="32" height="32"
-                            class="object-cover" />
+                            {{ $resized := $image.Fill "32x32 Center" }}
+                            <img src="{{ $resized.RelPermalink }}" alt="{{ $authorData.Title }}" width="32" height="32" class="object-cover" />
                         {{ else }}
+                            <div class="w-full h-full bg-base-300 flex items-center justify-center">
+                                {{ partial "helper/icon" "user" }}
+                            </div>
+                        {{ end }}
+                    {{ else }}
                         <div class="w-full h-full bg-base-300 flex items-center justify-center">
                             {{ partial "helper/icon" "user" }}
                         </div>
-                        {{ end }}
-                        {{ else }}
-                        <div class="w-full h-full bg-base-300 flex items-center justify-center">
-                            {{ partial "helper/icon" "user" }}
-                        </div>
-                        {{ end }}
-                    </div>
+                    {{ end }}
                 </div>
-                <a href="{{ $authorData.RelPermalink }}" class="text-sm font-medium hover:text-primary">
-                    {{ $authorData.Title }}
-                </a>
             </div>
-            {{ end }}
-            {{ end }}
+            <a href="{{ $authorData.RelPermalink }}" class="text-sm font-medium hover:text-primary">
+                {{ $authorData.Title }}
+            </a>
         </div>
         {{ end }}
-
+    {{ end }}
+</div>
+{{ end }}
         <!-- Date and reading time -->
         <div class="w-full flex justify-between items-center">
             <div class="text-xs text-base-content/70 flex gap-4">
@@ -92,7 +108,6 @@
                 </span>
                 {{ end }}
             </div>
-            <a href="{{ .RelPermalink }}" class="btn btn-xs btn-ghost">Read more</a>
         </div>
     </div>
 </div>

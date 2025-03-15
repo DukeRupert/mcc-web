@@ -30,38 +30,63 @@
         {{ partial "helper/icon" "user" }}
     </figure>
     {{ end }}
-{{ else }}
+    {{ else }}
     <figure class="bg-base-200 flex items-center justify-center" style="min-width: 200px; min-height: 200px;">
         {{ partial "helper/icon" "user" }}
     </figure>
-{{ end }}
+    {{ end }}
     
     <div class="card-body">
         <h2 class="card-title">
-            <a href="{{ .RelPermalink }}" class="hover:text-primary">{{ .Title }}</a>
+            <a href="{{ .RelPermalink }}" class="link hover:text-primary">{{ .Title }}</a>
         </h2>
         
         {{ with .Params.bio }}
         <p class="text-base-content/80">{{ . | truncate 120 }}</p>
         {{ end }}
         
-        {{/* Display skills if available */}}
-        {{ if .Params.skills }}
-        <div class="mt-2">
-            {{ partial "creator/skills" . }}
-        </div>
-        {{ end }}
-        
-        <div class="card-actions justify-between items-center mt-auto">
-            {{/* Get count of posts by this creator */}}
-            {{ $authorPosts := (where $.Site.RegularPages "Params.author" .File.ContentBaseName) }}
-            {{ $postCount := len $authorPosts }}
-            <div class="flex gap-2 items-center text-sm">
-                {{ partial "helper/icon" "writing" }}
-                <span>{{ $postCount }} {{ cond (eq $postCount 1) "post" "posts" }}</span>
+        {{/* Display skills section */}}
+        <div class="mt-2 space-y-2">
+            {{/* Common Skills */}}
+            {{ with .Params.common_skills }}
+            <div class="flex flex-wrap gap-1">
+                {{ range first 4 . }}
+                <span class="badge badge-sm">{{ . }}</span>
+                {{ end }}
+                {{ if gt (len .) 4 }}
+                <span class="badge badge-sm badge-outline">+{{ sub (len .) 4 }} more</span>
+                {{ end }}
             </div>
+            {{ end }}
             
-            <a href="{{ .RelPermalink }}" class="btn btn-sm btn-primary">View profile</a>
+        </div>
+        
+        <div class="card-actions justify-between items-center mt-auto pt-2 border-t border-base-200">
+            <div class="flex flex-wrap gap-3 items-center text-sm">
+                {{/* Get count of posts by this creator */}}
+                {{ $authorPosts := (where $.Site.RegularPages "Params.author" .File.ContentBaseName) }}
+                {{ $postCount := len $authorPosts }}
+                <div class="flex gap-1 items-center">
+                    {{ partial "helper/icon" "writing" }}
+                    <span>{{ $postCount }} {{ cond (eq $postCount 1) "post" "posts" }}</span>
+                </div>
+                
+                {{/* Project count */}}
+                {{ with .Params.projects }}
+                <div class="flex gap-1 items-center">
+                    {{ partial "helper/icon" "package" }}
+                    <span>{{ len . }} {{ cond (eq (len .) 1) "project" "projects" }}</span>
+                </div>
+                {{ end }}
+                
+                {{/* Open for collaboration indicator */}}
+                {{ with .Params.open_for }}
+                <div class="flex gap-1 items-center text-success">
+                    {{ partial "helper/icon" "check-circle" }}
+                    <span>Open for collaboration</span>
+                </div>
+                {{ end }}
+            </div>
         </div>
     </div>
 </li>
