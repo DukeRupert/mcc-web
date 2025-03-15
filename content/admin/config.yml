@@ -2,7 +2,7 @@
 backend:
   name: git-gateway
   repo: DukeRupert/mcc-web
-  branch: main
+  branch: master
   identity_url: https://auth.decapbridge.com/sites/fc890f91-2f54-4dad-9f4d-14e14f77ddab
   gateway_url: https://gateway.decapbridge.com
   # Quickly see who did what (optional)
