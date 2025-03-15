@@ -1,0 +1,17 @@
+{{/* layouts/partials/theme-toggle.html */}}
+<div class="toggle theme-toggle">
+  <label for="theme-toggle" class="swap">
+    <!-- This hidden checkbox controls the state -->
+    <input type="checkbox" id="theme-toggle" class="hidden" />
+    
+    <!-- Sun icon -->
+    <div class="swap-on flex items-center justify-center">
+      {{ partial "helper/icon" "sun" }}
+    </div>
+    
+    <!-- Moon icon -->
+    <div class="swap-off flex items-center justify-center">
+      {{ partial "helper/icon" "moon" }}
+    </div>
+  </label>
+</div>
