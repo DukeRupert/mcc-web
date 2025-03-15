@@ -16,22 +16,6 @@ url = "/creators"
 icon = "writing"
 
 [[social]]
-identifier = "github"
-name = "GitHub"
-url = "https://github.com/DukeRupert/manifold-creative-collective"
-
-[social.params]
-icon = "brand-github"
-
-[[social]]
-identifier = "x"
-name = "X"
-url = "https://x.com/TheManifoldCC"
-
-[social.params]
-icon = "brand-x"
-
-[[social]]
 identifier = "patreon"
 name = "Patreon"
 url = "https://patreon.com"
