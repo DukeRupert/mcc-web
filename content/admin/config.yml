@@ -66,6 +66,7 @@ collections:
           - "Writing"
           - "Event Organization"
           - "Data Analytics"
+          - "Voice Actor"
       
       # Other Skills Section for custom entries
       - label: "Other Skills"
@@ -101,7 +102,7 @@ collections:
         summary: "{{fields.platform}} - {{fields.url}}"
         required: false
         fields:
-          - {label: "Platform", name: "platform", widget: "select", options: ["twitter", "facebook", "instagram", "github", "linkedin", "patreon", "itch.io", "discord", "youtube", "twitch", "website", "bsky", "email", "other"], default: "website"}
+          - {label: "Platform", name: "platform", widget: "select", options: ["facebook", "instagram", "github", "linkedin", "patreon", "itchio", "discord", "youtube", "twitch", "x", "bluesky", "mastadon", "website", "email", "other"], default: "website"}
           - {label: "URL", name: "url", widget: "string"}
           - {label: "Display Text", name: "display_text", widget: "string", required: false, hint: "Optional text to display instead of the URL"}
 
