@@ -60,26 +60,28 @@
                     <div class="flex flex-wrap gap-3">
                         {{ range . }}
                         <a href="{{ .url }}" 
-                           class="btn btn-sm btn-outline" 
+                           class="btn btn btn-outline btn-primary" 
                            {{ if ne .platform "other" }}aria-label="{{ .platform }}"{{ end }}
                            {{ if ne (default true ($.Param "params.newTab")) false }}target="_blank" rel="noopener"{{ end }}>
                             {{ partial "helper/icon" (default "link" .platform) }}
                             {{ default .url .display_text }}
                         </a>
                         {{ end }}
-                    </div>
-                </div>
-                {{ end }}
-                
-                <!-- Contact Button if email is provided -->
+                        {{ end }}
+                        <!-- Contact Button if email is provided -->
                 {{ with .Params.email }}
                 <div class="mb-6">
-                    <a href="mailto:{{ . }}" class="btn btn-primary">
+                    <a href="mailto:{{ . }}" class="btn btn-outline btn-primary">
                         {{ partial "helper/icon" "mail" }}
                         Contact
                     </a>
                 </div>
-                {{ end }}
+ 
+               {{ end }}
+                    </div>
+                </div>
+                
+                
             </div>
         </div>
         
