@@ -1,0 +1,74 @@
+{{/* layouts/partials/creator/projects.html */}}
+{{ with .Params.projects }}
+<div class="projects-container">
+    <h3 class="projects-heading text-lg font-medium mb-3">Projects</h3>
+    
+    {{/* Featured Projects */}}
+    {{ $featuredProjects := where . "featured" true }}
+    {{ if $featuredProjects }}
+    <div class="featured-projects mb-4">
+        <h4 class="text-base font-medium opacity-70 mb-2">Featured</h4>
+        <div class="grid gap-4 md:grid-cols-2">
+            {{ range $featuredProjects }}
+            <div class="card bg-base-200 shadow-sm">
+                <div class="card-body p-4">
+                    <h5 class="card-title flex items-center gap-2">
+                        {{ .title }}
+                        <span class="badge badge-sm badge-primary">{{ .status }}</span>
+                    </h5>
+                    {{ with .description }}
+                    <p class="text-sm opacity-80">{{ . }}</p>
+                    {{ end }}
+                    {{ with .url }}
+                    <div class="card-actions justify-end mt-2">
+                        <a href="{{ . }}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline">
+                            View Project
+                            {{ partial "helper/icon" "external-link" }}
+                        </a>
+                    </div>
+                    {{ end }}
+                </div>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+    {{ end }}
+    
+    {{/* Other Projects */}}
+    {{ $otherProjects := where . "featured" false }}
+    {{ $projectsWithoutFeatured := where . "featured" nil }}
+    {{ $nonFeaturedProjects := $otherProjects | append $projectsWithoutFeatured }}
+    
+    {{ if $nonFeaturedProjects }}
+    <div class="other-projects">
+        {{ if $featuredProjects }}
+        <h4 class="text-base font-medium opacity-70 mb-2">Other Projects</h4>
+        {{ end }}
+        
+        <ul class="space-y-2">
+            {{ range $nonFeaturedProjects }}
+            <li class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 py-2 border-b border-base-300 last:border-0">
+                <div>
+                    <h5 class="font-medium flex items-center gap-2">
+                        {{ .title }}
+                        <span class="badge badge-sm {{ if eq .status "Available" }}badge-success{{ else if eq .status "In Progress" }}badge-warning{{ else if eq .status "Coming Soon" }}badge-info{{ else }}badge-neutral{{ end }}">
+                            {{ .status }}
+                        </span>
+                    </h5>
+                    {{ with .description }}
+                    <p class="text-sm opacity-80">{{ . }}</p>
+                    {{ end }}
+                </div>
+                {{ with .url }}
+                <a href="{{ . }}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-ghost">
+                    View
+                    {{ partial "helper/icon" "external-link" }}
+                </a>
+                {{ end }}
+            </li>
+            {{ end }}
+        </ul>
+    </div>
+    {{ end }}
+</div>
+{{ end }}

@@ -1,22 +1,44 @@
-{{- with .Params.skills -}}
+{{/* layouts/partials/creator/skills.html */}}
 <div class="skills-container">
-    <h3 class="skills-heading">Skills</h3>
-    <ol class="skills-list mx-auto menu menu-sm menu-horizontal bg-base-200 rounded-box mt-6">
-        {{ range . }}
-        <li class="skill-item">
-            <span class="skill-badge tooltip" data-tip="{{ . }}">
+    <h3 class="skills-heading text-lg font-medium mb-2">Skills</h3>
+    
+    {{/* Display Common Skills with Icons */}}
+    {{ with .Params.common_skills }}
+    <div class="common-skills mb-3">
+        <div class="flex flex-wrap gap-2">
+            {{ range . }}
+            <span class="skill-badge tooltip badge badge-lg" data-tip="{{ . }}">
                 {{ $iconName := lower . | urlize }}
-                {{ $iconPath := printf "assets/icons/brand-%s.svg" $iconName }}
-                {{ if fileExists $iconPath }}
-                {{ $icon := resources.Get $iconPath }}
-                <div class="skill-icon">{{ $icon.Content | safeHTML }}</div>
+                {{ $iconPath := printf "icons/brand-%s.svg" $iconName }}
+                {{ if resources.Get $iconPath }}
+                    {{ $icon := resources.Get $iconPath }}
+                    <div class="skill-icon flex items-center gap-1">
+                        <div class="w-5 h-5">{{ $icon.Content | safeHTML }}</div>
+                        <span class="skill-text text-sm">{{ . }}</span>
+                    </div>
                 {{ else }}
-                {{ $fallbackIcon := resources.Get "assets/icons/brand-other.svg" }}
-                <div class="skill-icon" title="{{ . }}">{{ $fallbackIcon.Content | safeHTML }}</div>
+                    {{ $fallbackIcon := resources.Get "icons/brand-other.svg" }}
+                    <div class="skill-icon flex items-center gap-1" title="{{ . }}">
+                        <div class="w-5 h-5">{{ $fallbackIcon.Content | safeHTML }}</div>
+                        <span class="skill-text text-sm">{{ . }}</span>
+                    </div>
                 {{ end }}
             </span>
-        </li>
-        {{ end }}
-    </ol>
+            {{ end }}
+        </div>
+    </div>
+    {{ end }}
+    
+    {{/* Display Other Skills (text only) */}}
+    {{ with .Params.other_skills }}
+    <div class="other-skills">
+        <div class="flex flex-wrap gap-2">
+            {{ range . }}
+            <span class="skill-badge badge badge-outline badge-lg">
+                <span class="skill-text text-sm">{{ . }}</span>
+            </span>
+            {{ end }}
+        </div>
+    </div>
+    {{ end }}
 </div>
-{{- end -}}

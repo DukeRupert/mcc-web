@@ -1,7 +1,25 @@
 {{- $creator := . -}}
 <li class="card md:card-side bg-base-100 hover:shadow-lg transition-shadow duration-300">
     {{ with .Params.avatar }}
+    {{/* Try multiple paths to find the avatar image */}}
     {{ $image := resources.Get . }}
+    
+    {{/* If not found, check if it's a CMS upload path */}}
+    {{ if not $image }}
+        {{ if hasPrefix . "/images/uploads/" }}
+            {{ $assetPath := replace . "/images/uploads/" "uploads/" }}
+            {{ $image = resources.Get $assetPath }}
+        {{ end }}
+    {{ end }}
+    
+    {{/* If still not found, try without leading slash */}}
+    {{ if not $image }}
+        {{ if hasPrefix . "/" }}
+            {{ $noLeadingSlash := strings.TrimPrefix "/" . }}
+            {{ $image = resources.Get $noLeadingSlash }}
+        {{ end }}
+    {{ end }}
+    
     {{ if $image }}
     {{ $resized := $image.Fill "500x300 Center" }}
     <figure class="relative overflow-hidden">
@@ -12,11 +30,11 @@
         {{ partial "helper/icon" "user" }}
     </figure>
     {{ end }}
-    {{ else }}
+{{ else }}
     <figure class="bg-base-200 flex items-center justify-center" style="min-width: 200px; min-height: 200px;">
         {{ partial "helper/icon" "user" }}
     </figure>
-    {{ end }}
+{{ end }}
     
     <div class="card-body">
         <h2 class="card-title">

@@ -4,3 +4,5 @@ resources
 
 node_modules
 .env
+
+*.sh
