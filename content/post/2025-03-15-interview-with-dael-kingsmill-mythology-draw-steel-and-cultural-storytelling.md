@@ -9,6 +9,7 @@ tags:
   - interview
   - post
   - draw steel
+  - insight check
 ---
 ## Introduction
 
@@ -132,4 +133,4 @@ I think it's fascinating that what is honorable is so different across different
 
 It's one of the questions that I think of first when I'm doing worldbuilding stuff and I'm setting up a city or something - I think "how do they dispose of their dead? Where are they putting their dead people?" Is it catacombs, is it a cemetery, is it on the side of the hill facing the sunrise? What do they believe about death? I think it becomes a very key way to understand even fictional cultures.
 
-*This interview was conducted as part of the Insight Check series, featuring discussions about tabletop RPGs and game design.*
+_This interview was conducted as part of the Insight Check series, featuring discussions about tabletop RPGs and game design._
