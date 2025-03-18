@@ -5,6 +5,4 @@
 	let { posts } = data;
 </script>
 
-<div class="p-8">
-	<List {posts} />
-</div>
+<List {posts} />
