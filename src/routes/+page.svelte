@@ -1,13 +1,10 @@
 <script lang="ts">
-    import type { PageProps } from './$types';
-  import { Alert } from 'flowbite-svelte';
+	import List from '$lib/post/list.svelte';
+	import type { PageProps } from './$types';
 	let { data }: PageProps = $props();
-    console.log(data);
+	let { posts } = data;
 </script>
 
 <div class="p-8">
-  <Alert>
-    <span class="font-medium">Info alert!</span>
-    Change a few things up and try submitting again.
-  </Alert>
+	<List {posts} />
 </div>
