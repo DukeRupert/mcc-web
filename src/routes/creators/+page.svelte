@@ -1,9 +1,8 @@
 <script lang="ts">
-	import List from '$lib/post/list.svelte';
+	import List from '$lib/creator/list.svelte';
 	import type { PageProps } from './$types';
 	let { data }: PageProps = $props();
-	let { posts } = data;
-	$inspect(posts);
+	let { creators } = data;
 </script>
 
-<List {posts} />
+<List {creators} />
