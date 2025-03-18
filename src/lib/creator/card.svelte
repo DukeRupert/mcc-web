@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { Badge, Button, Card } from 'flowbite-svelte';
-	import { DotsHorizontalOutline } from 'flowbite-svelte-icons';
 	import { ArrowRightOutline } from 'flowbite-svelte-icons';
 	import Image from '$lib/directus/image.svelte';
 	import type { Creator } from '$lib/directus/types';
@@ -41,7 +40,7 @@
 					</div>
 				{/if}
 				<div class="mt-4 flex space-x-3 lg:mt-6 rtl:space-x-reverse">
-					<Button href={`https://manifoldcollective.com/creators/${creator.id}`}>
+					<Button href={`/creators/${creator.id}`}>
 						Learn more <ArrowRightOutline class="ms-2 h-6 w-6 text-white" />
 					</Button>
 				</div>

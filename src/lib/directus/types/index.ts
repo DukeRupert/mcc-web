@@ -30,6 +30,7 @@ export interface Creator {
     user_updated?: string
     date_updated?: string
     title: string
+    slug: string
     bio?: string
     avatar?: Avatar
     email?: string
