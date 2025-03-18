@@ -1,27 +1,51 @@
 <script lang="ts">
-	import { Card, Button } from 'flowbite-svelte';
+	import { Badge, Button, Card } from 'flowbite-svelte';
+	import { DotsHorizontalOutline } from 'flowbite-svelte-icons';
 	import { ArrowRightOutline } from 'flowbite-svelte-icons';
+	import Image from '$lib/directus/image.svelte';
 	import type { Creator } from '$lib/directus/types';
 	interface Props {
 		creator: Creator;
 	}
 	let { creator }: Props = $props();
+	$inspect(creator);
 </script>
 
-<div class="w-full space-y-4">
-	<Card
-		size="xl"
-		img="https://images.unsplash.com/photo-1578377375762-cbcc98d68af0?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-	>
-		<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-			{creator.title}
-		</h5>
-		<p class="mb-3 leading-tight font-normal text-gray-700 dark:text-gray-400">
-			Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse
-			chronological order.
-		</p>
-		<Button>
-			Read more <ArrowRightOutline class="ms-2 h-6 w-6 text-white" />
-		</Button>
+<article id="creator-card" class="w-full space-y-4">
+	<Card size="xl">
+		<div class="flex flex-col items-center pb-4">
+			{#if creator.avatar}
+				<Image
+					id={creator.avatar.id}
+					alt={creator.title}
+					height={creator.avatar.height}
+					width={creator.avatar.width}
+					className="w-full rounded-t-md object-cover object-center max-h-[400px]"
+					type="avatar"
+				/>
+			{/if}
+			<div class="p-4">
+				<h5
+					id="creator-title"
+					class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+				>
+					{creator.title}
+				</h5>
+				{#if creator.skills && creator.skills.length > 0}
+					<div id="creator-skills" class="flex gap-2">
+						{#each creator.skills as skill}
+							<Badge large>
+								{skill}
+							</Badge>
+						{/each}
+					</div>
+				{/if}
+				<div class="mt-4 flex space-x-3 lg:mt-6 rtl:space-x-reverse">
+					<Button href={`https://manifoldcollective.com/creators/${creator.id}`}>
+						Learn more <ArrowRightOutline class="ms-2 h-6 w-6 text-white" />
+					</Button>
+				</div>
+			</div>
+		</div>
 	</Card>
-</div>
+</article>
