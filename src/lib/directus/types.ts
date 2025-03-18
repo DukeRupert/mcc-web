@@ -11,6 +11,18 @@ export interface Social {
   display_text: string
 }
 
+export interface Avatar {
+  id: string
+  height: number
+  width: number
+}
+
+export interface Image {
+  id: string
+  height: number
+  width: number
+}
+
 export interface Creator {
   id: number
   user_created: string
@@ -19,7 +31,7 @@ export interface Creator {
   date_updated?: string
   title: string
   bio?: string
-  avatar?: string
+  avatar?: Avatar
   email?: string
   skills?: string[]
   socials?: Social[]
@@ -53,9 +65,9 @@ export interface Post {
   title: string
   slug: string
   date?: string
-  creator_id?: number | Creator
-  category_id?: number | Category
-  image?: string
+  creator_id?: Creator
+  category_id?: Category
+  image?: Image
   body?: string
   tags?: string[]
 }

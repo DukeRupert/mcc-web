@@ -1,8 +1,8 @@
-<script>
+<script lang="ts">
 	// Image props
-	export let id; // Required: The Directus file ID
-	export let width = null; // Optional: Image width
-	export let height = null; // Optional: Image height
+	export let id = ''; // Required: The Directus file ID
+	export let width: number; // Optional: Image width
+	export let height: number; // Optional: Image height
 	export let alt = ''; // Optional: Alt text for accessibility
 	export let className = ''; // Optional: Additional CSS classes
 
