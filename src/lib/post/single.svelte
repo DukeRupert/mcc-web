@@ -1,7 +1,9 @@
 <script lang="ts">
     import { onMount } from 'svelte';
     import { formatDate, getReadTime } from "$lib/post/utils"
-    import type { Creator, Category, Image, Post } from '$lib/directus/types';
+    import type { Post } from '$lib/directus/types';
+    import Image from '$lib/directus/image.svelte';
+    import { Badge } from 'flowbite-svelte'
 
     interface Props {
         post: Post
@@ -24,19 +26,18 @@
       {#if post.category_id}
         <a 
           href={`/category/${post.category_id.slug}`} 
-          class="inline-block text-sm font-medium text-indigo-600 hover:text-indigo-800 mb-3"
         >
-          {post.category_id.title}
+          <Badge large color="primary">{post.category_id.title}</Badge>
         </a>
       {/if}
       
       <!-- Title -->
-      <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-50 mb-4">
         {post.title}
       </h1>
       
       <!-- Post Meta - Date, Read Time, Author -->
-      <div class="flex flex-wrap items-center gap-4 text-sm text-gray-600 mb-4">
+      <div class="flex flex-wrap items-center gap-4 text-sm text-gray-600 dark:text-gray-400 mb-4">
         {#if post.date || post.date_created}
           <time datetime={post.date || post.date_created}>
             <svg class="w-4 h-4 inline-block mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -61,19 +62,17 @@
         <div class="flex items-center mt-5">
           <a href={`/author/${post.creator_id.slug}`} class="flex items-center group">
             {#if post.creator_id.avatar}
-              <img 
-                src={post.creator_id.avatar.url} 
-                alt={post.creator_id.title} 
-                class="w-10 h-10 rounded-full object-cover mr-3"
+              <Image 
+                id={post.creator_id.avatar.id} 
+                alt={post.creator_id.title}
+                width={post.creator_id.avatar.width}
+                height={post.creator_id.avatar.height}
+                className="w-10 h-10 rounded-full object-cover mr-3"
               />
-            {:else}
-              <div class="w-10 h-10 rounded-full bg-indigo-600 text-white flex items-center justify-center text-sm font-medium uppercase mr-3">
-                {post.creator_id.title.charAt(0)}
-              </div>
             {/if}
             
             <div>
-              <span class="text-sm font-medium text-gray-900 group-hover:text-indigo-600">
+              <span class="text-sm font-medium text-gray-900 group-hover:text-orange-600">
                 {post.creator_id.title}
               </span>
               {#if post.creator_id.bio}
@@ -90,10 +89,12 @@
     <!-- Featured Image -->
     {#if post.image}
       <div class="mb-8 rounded-lg overflow-hidden">
-        <img 
-          src={post.image.url} 
-          alt={post.title} 
-          class="w-full h-auto object-cover"
+        <Image
+          id={post.image.id} 
+          alt={post.title}
+          height={post.image.height}
+          width={post.image.width}
+          className="w-full h-auto object-cover"
         />
       </div>
     {/if}
@@ -104,16 +105,15 @@
         {#each post.tags as tag}
           <a 
             href={`/tag/${tag.toLowerCase().replace(/\s+/g, '-')}`}
-            class="inline-block px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm text-gray-700 transition-colors duration-200"
           >
-            #{tag}
+            <Badge large>#{tag}</Badge>
           </a>
         {/each}
       </div>
     {/if}
     
     <!-- Post Content -->
-    <div class="prose lg:prose-lg max-w-none">
+    <div class="prose lg:prose-lg dark:prose-invert max-w-none">
       {#if post.body}
         {@html post.body}
       {/if}
@@ -151,15 +151,13 @@
           <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4">
             <a href={`/author/${post.creator_id.slug}`} class="flex-shrink-0">
               {#if post.creator_id.avatar}
-                <img 
-                  src={post.creator_id.avatar.url} 
+                <Image 
+                  id={post.creator_id.avatar.id} 
                   alt={post.creator_id.title} 
-                  class="w-16 h-16 rounded-full object-cover"
+                  width={post.creator_id.avatar.width}
+                  height={post.creator_id.avatar.height}
+                  className="w-16 h-16 rounded-full object-cover"
                 />
-              {:else}
-                <div class="w-16 h-16 rounded-full bg-indigo-600 text-white flex items-center justify-center text-xl font-medium uppercase">
-                  {post.creator_id.title.charAt(0)}
-                </div>
               {/if}
             </a>
             

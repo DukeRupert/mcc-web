@@ -7,7 +7,7 @@
 </script>
 
 <Navbar><DarkMode /></Navbar>
-<main class="bg-white dark:bg-gray-800 py-10">
+<main class="bg-white dark:bg-gray-800 min-h-screen py-10">
 	<div class="px-4 sm:px-6 lg:px-8">
 		{@render children()}
 	</div>

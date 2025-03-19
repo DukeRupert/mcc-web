@@ -5,16 +5,17 @@ import { readItems } from '@directus/sdk';
 export const load: PageLoad = async ({ params }) => {
   let slug = params.slug
   
-  let creators = await client.request(readItems('creator', {
+  let posts = await client.request(readItems('post', {
     filter: {
       slug: {
         _eq: slug
       }
     },
-    fields: ['*', { avatar: ['id', 'width', 'height'] }, { projects: ['*'] }]
+    fields: ['*', { creator_id: ['*', { avatar: ['id', 'width', 'height'] }] }, { category_id: ['*'] }, { image: [ 'id', 'width', 'height']}]
   }))
-  let creator = creators[0]
+  let post = posts[0]
   return {
-    creator
+    post
   };
 };
+
