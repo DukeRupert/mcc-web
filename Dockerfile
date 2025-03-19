@@ -1,5 +1,5 @@
 # Use Node.js as the base image
-FROM node:20-alpine as build
+FROM node:20-alpine
 
 # Set working directory
 WORKDIR /app
@@ -17,20 +17,14 @@ RUN pnpm install
 # Copy the rest of the application
 COPY . .
 
+# Create .env file with Directus configuration
+RUN echo "PUBLIC_DIRECTUS_URL=http://directus:8055" > .env
+
 # Build the application
 RUN pnpm build
 
-# Use Nginx to serve the static files
-FROM nginx:alpine as production
+# Expose the port the app runs on
+EXPOSE 3000
 
-# Copy built assets from the build stage
-COPY --from=build /app/build /usr/share/nginx/html
-
-# Copy Nginx configuration if you have a custom one
-# COPY ./nginx.conf /etc/nginx/conf.d/default.conf
-
-# Expose port 80
-EXPOSE 80
-
-# Start Nginx
-CMD ["nginx", "-g", "daemon off;"]
+# Command to serve the application
+CMD ["node", "build"]
