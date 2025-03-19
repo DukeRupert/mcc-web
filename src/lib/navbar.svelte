@@ -16,10 +16,10 @@
 			<NavHamburger on:click={toggle} />
 		</div>
 		<NavUl {hidden}>
-			<NavLi href="/">Home</NavLi>
-			<NavLi href="/creators">Creators</NavLi>
-			<NavLi href="/about-us">About us</NavLi>
-			<NavLi href="/contact-us">Contact us</NavLi>
+			<NavLi on:click={toggle} href="/">Home</NavLi>
+			<NavLi on:click={toggle} href="/creators">Creators</NavLi>
+			<NavLi on:click={toggle} href="/about-us">About us</NavLi>
+			<NavLi on:click={toggle} href="/contact-us">Contact us</NavLi>
 		</NavUl>
 	</Navbar>
 </div>
