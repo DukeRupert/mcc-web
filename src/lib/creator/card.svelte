@@ -31,7 +31,7 @@
 					{creator.title}
 				</h5>
 				{#if creator.skills && creator.skills.length > 0}
-					<div id="creator-skills" class="flex gap-2">
+					<div id="creator-skills" class="flex gap-2 my-4">
 						{#each creator.skills as skill}
 							<Badge large>
 								{skill}
@@ -39,9 +39,14 @@
 						{/each}
 					</div>
 				{/if}
+				{#if creator.bio}
+					<p class="mt-1 mb-3 text-gray-600 dark:text-gray-300">
+						{creator.bio}
+					</p>
+				{/if}
 				<div class="mt-4 flex space-x-3 lg:mt-6 rtl:space-x-reverse">
-					<Button href={`/creators/${creator.slug}`}>
-						Learn more <ArrowRightOutline class="ms-2 h-6 w-6 text-white" />
+					<Button outline href={`/creators/${creator.slug}`}>
+						Learn more <ArrowRightOutline class="ms-2 h-6 w-6 text-primary" />
 					</Button>
 				</div>
 			</div>
