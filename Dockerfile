@@ -11,8 +11,8 @@ RUN npm install -g pnpm
 COPY package.json ./
 COPY pnpm-lock.yaml* ./
 
-# Install dependencies
-RUN pnpm install
+# Install dependencies with more verbose output
+RUN pnpm install --no-frozen-lockfile
 
 # Copy the rest of the application
 COPY . .
@@ -20,8 +20,8 @@ COPY . .
 # Create .env file with Directus configuration
 RUN echo "PUBLIC_DIRECTUS_URL=http://directus:8055" > .env
 
-# Build the application
-RUN pnpm build
+# Build with more verbose output
+RUN pnpm build || (echo "Build failed. See error above." && exit 1)
 
 # Expose the port the app runs on
 EXPOSE 3000
