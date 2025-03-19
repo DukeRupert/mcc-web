@@ -17,8 +17,15 @@ RUN pnpm install --no-frozen-lockfile
 # Copy the rest of the application
 COPY . .
 
+# Set environment variables
+ENV PUBLIC_DIRECTUS_URL=http://directus:8055
+
+# Make sure the environment variable is available during build
+ARG PUBLIC_DIRECTUS_URL=http://directus:8055
+ENV PUBLIC_DIRECTUS_URL=${PUBLIC_DIRECTUS_URL}
+
 # Create .env file with Directus configuration
-RUN echo "PUBLIC_DIRECTUS_URL=http://directus:8055" > .env
+RUN echo "PUBLIC_DIRECTUS_URL=${PUBLIC_DIRECTUS_URL}" > .env
 
 # Build with more verbose output
 RUN pnpm build || (echo "Build failed. See error above." && exit 1)
