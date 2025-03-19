@@ -101,10 +101,10 @@
 						<p>{project.description}</p>
 						<div class="mt-4 flex space-x-3 lg:mt-6 rtl:space-x-reverse">
 							<Button
+                outline
 								href={project.url}
 								target="_blank"
 								rel="noopener noreferrer"
-								class="inline-flex items-center rounded-lg bg-indigo-600 px-3 py-2 text-center text-sm font-medium text-white hover:bg-indigo-700 focus:ring-4 focus:ring-indigo-300 focus:outline-none"
 							>
 								View Project
 								<svg
