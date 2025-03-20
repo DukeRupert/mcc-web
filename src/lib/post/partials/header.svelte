@@ -37,10 +37,10 @@
         </A>
     </div>
 
-	<!-- Author -->
+	<!-- Creator -->
 	{#if post.creator_id}
-		<div id="post-author" class="mb-2 flex items-center">
-			<A href={`/author/${post.creator_id.slug}`} class="group flex items-center">
+		<div id="post-creator" class="mb-2 flex items-center">
+			<A href={`/creators/${post.creator_id.slug}`} class="group flex items-center">
 				{#if post.creator_id.avatar}
 					<Avatar
 						src={`https://content.manifoldcollective.com/assets/${post.creator_id.avatar.id}`}
@@ -57,7 +57,7 @@
 		</div>
 	{/if}
 
-	<!-- Post Meta - Date, Read Time, Author -->
+	<!-- Post Meta - Date, Read Time -->
 	<div
 		id="post-meta"
 		class="flex flex-wrap justify-between gap-4 text-sm text-gray-600 dark:text-gray-400"

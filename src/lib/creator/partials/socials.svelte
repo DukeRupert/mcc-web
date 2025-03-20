@@ -99,7 +99,7 @@
 				href={social.url}
 				target="_blank"
 				rel="noopener noreferrer"
-				class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-gray-700 transition-colors duration-200 hover:bg-indigo-100 hover:text-indigo-600"
+				class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-gray-700 transition-colors duration-200 hover:bg-primary-100 hover:text-primary-600"
 				title={social.platform}
 				aria-label={`Go to ${social.platform}`}
 			>

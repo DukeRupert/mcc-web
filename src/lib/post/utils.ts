@@ -12,7 +12,6 @@ export function formatDate(dateString: string): string {
 
 // Format read time (rough estimate based on word count)
 export function getReadTime(content: string): number {
-    console.log('Getting read time')
     if (!content) return 0;
 
     // Strip HTML tags for accurate word count

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Badge, Button, Card } from 'flowbite-svelte';
 	import Image from '$lib/directus/image.svelte';
-	import Socials from '$lib/creator/socials.svelte';
+	import Socials from '$lib/creator/partials/socials.svelte';
 	import type { Creator } from '$lib/directus/types';
 	interface Props {
 		creator: Creator;
@@ -18,11 +18,6 @@
 			month: 'long',
 			day: 'numeric'
 		});
-	}
-
-	// Format email to prevent scraping
-	function formatEmail(email: string): string {
-		return email.replace('@', ' [at] ');
 	}
 </script>
 

@@ -4,7 +4,7 @@
 	import type { Post } from '$lib/directus/types/index';
 	import Header from './partials/header.svelte';
 	import Image from '$lib/directus/image.svelte';
-	import Avatar from '$lib/creator/avatar.svelte';
+	import Avatar from '$lib/creator/partials/avatar.svelte';
 	interface Props {
 		post: Post;
 	}
