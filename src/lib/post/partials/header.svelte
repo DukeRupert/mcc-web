@@ -21,7 +21,7 @@
 <header id="post-details">
 	<!-- Category -->
 	{#if post.category_id}
-		<a href={`/category/${post.category_id.slug}`}>
+		<a href={`/categories/${post.category_id.slug}`}>
 			<Badge id={`category-${post.category_id}`} large color="primary"
 				>{post.category_id.title}</Badge
 			>
