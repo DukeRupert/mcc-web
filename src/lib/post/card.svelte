@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { Card, Button } from 'flowbite-svelte';
 	import { ArrowRightOutline } from 'flowbite-svelte-icons';
-	import type { Post } from '$lib/directus/types';
+	import type { Post } from '$lib/directus/types/index';
+	import Header from './partials/header.svelte';
 	import Image from '$lib/directus/image.svelte';
 	import Avatar from '$lib/creator/avatar.svelte';
 	interface Props {
@@ -23,15 +24,7 @@
 				/>
 			{/if}
 			<div class="p-4">
-				<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-					{post.title}
-				</h5>
-				<div class="flex justify-between">
-					<Avatar {creator} />
-					<Button href={`/posts/${post.slug}`}>
-						Read more <ArrowRightOutline class="ms-2 h-6 w-6 text-white" />
-					</Button>
-				</div>
+				<Header {post} />
 			</div>
 		</Card>
 	</div>

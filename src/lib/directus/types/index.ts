@@ -66,9 +66,10 @@ export interface Post {
     date_updated?: string
     title: string
     slug: string
+    description?: string
     date?: string
-    creator_id?: Creator
-    category_id?: Category
+    creator_id: Creator
+    category_id: Category
     image?: Image
     body?: string
     tags?: string[]
