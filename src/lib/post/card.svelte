@@ -13,19 +13,17 @@
 </script>
 
 {#if creator}
-	<div class="w-full space-y-4">
-		<Card size="lg" padding="none">
-			{#if post.image && typeof post.image !== 'string'}
-				<Image
-					id={post.image.id}
-					width={post.image.width}
-					height={post.image.height}
-					className="rounded-t-md"
-				/>
-			{/if}
-			<div class="p-4">
-				<Header {post} />
-			</div>
-		</Card>
-	</div>
+	<Card size="lg" padding="none">
+		{#if post.image && typeof post.image !== 'string'}
+			<Image
+				id={post.image.id}
+				width={post.image.width}
+				height={post.image.height}
+				className="rounded-t-md"
+			/>
+		{/if}
+		<div class="p-4">
+			<Header {post} />
+		</div>
+	</Card>
 {/if}

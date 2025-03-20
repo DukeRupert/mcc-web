@@ -7,7 +7,7 @@
 	let { posts }: Props = $props();
 </script>
 
-<ul role="list" class="max-w-lg mx-auto grid grid-cols-1 gap-6">
+<ul role="list" class="grid grid-cols-1 justify-items-center gap-6">
 	{#each posts as post}
 		<Card {post} />
 	{/each}

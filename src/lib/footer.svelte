@@ -1,19 +1,15 @@
-<script>
+<script lang="ts">
 	import { A } from 'flowbite-svelte';
-	// Company information
-	const companyName = 'Manifold Creative Collective';
+	import type { SocialLink } from '$lib';
+	interface Props {
+		companyName: string,
+		socialLinks: SocialLink[]
+	}
+
+	let { companyName, socialLinks }: Props = $props()
 
 	// Current year using JavaScript
 	const currentYear = new Date().getFullYear();
-
-	// Social media links - each with url, name, and SVG path
-	const socialLinks = [
-		{
-			name: 'GitHub',
-			url: 'https://github.com/dukeRupert/mcc-web',
-			icon: '/icons/brand-github.svg'
-		}
-	];
 </script>
 
 <footer class="bg-white dark:bg-gray-900">
