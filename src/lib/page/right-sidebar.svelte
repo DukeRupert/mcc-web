@@ -9,8 +9,6 @@
 	let categories: Category[] = $state([]);
 	let loading = $state(true);
 	let error: null | unknown = $state(null);
-	$inspect(categories);
-	$inspect(loading);
 
 	// Use onMount to make API call when component is mounted
 	onMount(async () => {

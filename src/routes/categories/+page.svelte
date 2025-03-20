@@ -6,7 +6,6 @@
 	import type { PageProps } from './$types';
 	let { data }: PageProps = $props();
 	let { categories } = data;
-    $inspect(categories)
 
 	const title =
 		'TTRPG Content Library | The Manifold Creator Collective | Draw Steel & Tabletop RPG Resources';
@@ -26,14 +25,17 @@
 		url: url
 	};
 
-    const header = {
-        eyebrow: "Our Story",
-        title: "About The Manifold",
-        description: "Explore The Manifold Creator Collective's comprehensive TTRPG content library featuring resources for Draw Steel and diverse tabletop roleplaying games"
-    }
-
+	const header = {
+		eyebrow: 'Our Story',
+		title: 'About The Manifold',
+		description:
+			"Explore The Manifold Creator Collective's comprehensive TTRPG content library featuring resources for Draw Steel and diverse tabletop roleplaying games"
+	};
 </script>
 
 <Head {seo_config} />
 <SchemaOrg schema={schema_org} />
 <Header {...header} />
+{#each categories as category}
+	<p>{category.title}</p>
+{/each}
