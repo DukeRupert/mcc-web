@@ -21,15 +21,15 @@
 		},
 		{
 			name: 'github',
-			icon: '/icons/brand-github'
+			icon: '/icons/brand-github.svg'
 		},
 		{
 			name: 'youtube',
-			icon: '/icons/brand-youtube'
+			icon: '/icons/brand-youtube.svg'
 		},
 		{
 			name: 'linkedin',
-			icon: '/icons/brand-linkedin'
+			icon: '/icons/brand-linkedin.svg'
 		},
 		{
 			name: 'medium',
@@ -49,17 +49,44 @@
 		}
 	];
 
-	// Create a mapping between platform names and the creator's social URLs
-	function getSocialIcon(platformName: string): string {
-		let icon = '/icons/link.svg';
-		// Find the corresponding icon from our socialLinks array
-		const iconMatch = socialLinks.find(
-			(link) => link.name.toLowerCase() === platformName.toLowerCase()
-		);
+	function getSocialIcon(platformName: string) {
+		// Convert the platform name to lowercase for case-insensitive matching
+		const platform = platformName.toLowerCase();
 
-		if (iconMatch) icon = iconMatch.icon;
-
-		return icon;
+		// Use switch case to return the appropriate icon path
+		switch (platform) {
+			case 'facebook':
+				return '/icons/brand-facebook.svg';
+			case 'instagram':
+				return '/icons/brand-instagram.svg';
+			case 'x':
+				return '/icons/brand-x.svg';
+			case 'bluesky':
+				return '/icons/brand-bluesky.svg';
+			case 'itchio':
+				return '/icons/brand-itchio.svg';
+			case 'mastodon':
+				return '/icons/brand-mastodon.svg';
+			case 'discord':
+				return '/icons/brand-discord.svg';
+			case 'github':
+				return '/icons/brand-github.svg';
+			case 'youtube':
+				return '/icons/brand-youtube.svg';
+			case 'linkedin':
+				return '/icons/brand-linkedin.svg';
+			case 'medium':
+				return '/icons/brand-medium.svg';
+			case 'website':
+				return '/icons/website.svg';
+			case 'email':
+				return '/icons/email.svg';
+			case 'link':
+				return '/icons/link.svg';
+			default:
+				// Default icon if no match is found
+				return '/icons/link.svg';
+		}
 	}
 </script>
 

@@ -10,9 +10,9 @@
 	$inspect(creator);
 </script>
 
-<article id="creator-card" class="w-full space-y-4">
+<article id="creator-card" class="w-full max-w-sm mx-auto space-y-4">
 	<Card size="xl">
-		<div class="flex flex-col items-center pb-4">
+		<div class="flex flex-col items-center pb-4 w-full max-w-xs">
 			{#if creator.avatar}
 				<Image
 					id={creator.avatar.id}
@@ -23,17 +23,17 @@
 					type="avatar"
 				/>
 			{/if}
-			<div class="p-4">
+			<div class="p-4 max-w-full">
 				<h5
 					id="creator-title"
-					class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+					class="mb-2 text-2xl font-bold tracking-tight text-center text-gray-900 dark:text-white"
 				>
 					{creator.title}
 				</h5>
 				{#if creator.skills && creator.skills.length > 0}
-					<div id="creator-skills" class="flex gap-2 my-4">
+					<div id="creator-skills" class="flex flex-wrap gap-2 my-4">
 						{#each creator.skills as skill}
-							<Badge large>
+							<Badge>
 								{skill}
 							</Badge>
 						{/each}

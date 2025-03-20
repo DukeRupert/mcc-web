@@ -64,7 +64,7 @@
 
 			<!-- Skills -->
 			{#if creator.skills && creator.skills.length > 0}
-				<div class="flex flex-wrap justify-center gap-2 md:justify-start">
+				<div id="creator-skills" class="flex flex-row flex-wrap justify-center gap-2 md:justify-start">
 					{#each creator.skills as skill}
 						<Badge large>
 							{skill}
