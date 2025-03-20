@@ -1,10 +1,14 @@
 <script lang="ts">
 	import type { PageProps } from './$types';
+    import { Heading } from 'flowbite-svelte'
+    import Breadcrumbs from '$lib/page/breadcrumbs.svelte';
+    import List from '$lib/post/list.svelte'
 	let { data }: PageProps = $props();
 	let { slug, posts } = data;
 </script>
 
-<h1>{slug}</h1>
-{#each posts as post}
-	<h2>{post.title}</h2>
-{/each}
+<Breadcrumbs />
+<Heading tag="h1" class="capitalize mt-4">{slug}</Heading>
+<div id="posts" class="mt-8">
+    <List {posts} />
+</div>
