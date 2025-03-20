@@ -12,14 +12,14 @@
 			>
 		</NavBrand>
 		<div class="flex gap-2">
-			<DarkMode />
 			<NavHamburger on:click={toggle} />
 		</div>
-		<NavUl {hidden}>
+		<NavUl {hidden} ulClass="flex flex-col p-2 mt-2 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:text-sm md:font-medium md:items-center">
 			<NavLi href="/">Home</NavLi>
 			<NavLi href="/creators">Creators</NavLi>
 			<NavLi href="/about-us">About us</NavLi>
 			<NavLi href="/contact-us">Contact us</NavLi>
+			<NavLi><DarkMode /></NavLi>
 		</NavUl>
 	</Navbar>
 </div>
