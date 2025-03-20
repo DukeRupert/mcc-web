@@ -3,6 +3,7 @@
 	import type { SocialLink } from '$lib';
 	import Navbar from '$lib/navbar.svelte';
 	import LeftSidebar from '$lib/page/left-sidebar.svelte';
+	import RightSidebar from '$lib/page/right-sidebar.svelte';
 	import Footer from '$lib/footer.svelte';
 	let { children } = $props();
 
@@ -35,9 +36,6 @@
 		{@render children()}
 	</div>
 
-	<!-- Part 3: Only visible on large screens, max 15% width -->
-	<div class="fixed top-18 right-0 hidden h-[calc(100vh-72px)] overflow-y-auto lg:block lg:w-[20%]">
-		<div class="p-2">Part 3 content</div>
-	</div>
+	<RightSidebar />
 </main>
 <Footer {companyName} {socialLinks} />

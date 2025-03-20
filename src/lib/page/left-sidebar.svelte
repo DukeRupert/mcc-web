@@ -49,13 +49,6 @@
                         width=150
 					/>
 				</div>
-
-				<!-- Debug info - remove in production -->
-				<div class="debug-info">
-					<p>Scroll: {Math.round(scrollPercentage * 100)}%</p>
-					<p>Rotation: {Math.round(rotation)}°</p>
-					<p>Scale: {scaleFactor.toFixed(2)}</p>
-				</div>
 			</div>
 			<div class="mt-4 flex space-x-3 lg:mt-6">
 				<P
