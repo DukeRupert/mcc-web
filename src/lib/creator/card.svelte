@@ -7,7 +7,6 @@
 		creator: Creator;
 	}
 	let { creator }: Props = $props();
-	$inspect(creator);
 </script>
 
 <article id="creator-card" class="w-full max-w-sm mx-auto space-y-4">

@@ -5,7 +5,6 @@
 		creators: Creator[];
 	}
 	let { creators }: Props = $props();
-	$inspect(creators);
 </script>
 
 <ul role="list" class="mx-auto grid max-w-5xl grid-cols-1 md:grid-cols-2 gap-6">
