@@ -1,7 +1,6 @@
 <script lang="ts">
-	import { page } from '$app/stores';
 	import { Navbar, NavBrand, NavHamburger, NavUl, NavLi } from 'flowbite-svelte';
-	let { children } = $props();
+	import { DarkMode } from 'flowbite-svelte';
 </script>
 
 <div>
@@ -13,7 +12,7 @@
 			>
 		</NavBrand>
 		<div class="flex gap-2">
-			{@render children()}
+			<DarkMode />
 			<NavHamburger on:click={toggle} />
 		</div>
 		<NavUl {hidden}>
