@@ -1,7 +1,8 @@
 <script lang="ts">
-	import { Badge, Button, Card } from 'flowbite-svelte';
+	import { Badge, Button, Card, Heading, P, A } from 'flowbite-svelte';
 	import Image from '$lib/directus/image.svelte';
 	import Socials from '$lib/creator/partials/socials.svelte';
+	import Status from '$lib/creator/partials/status.svelte';
 	import type { Creator } from '$lib/directus/types';
 	interface Props {
 		creator: Creator;
@@ -21,11 +22,14 @@
 	}
 </script>
 
-<div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-	<!-- Author Header Section -->
-	<div class="mb-12 flex flex-col items-center gap-6 md:flex-row md:items-start">
+<div id="creator-profile" class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+	<!-- Creator Header Section -->
+	<section
+		id="creator-info"
+		class="mb-12 flex flex-col items-center gap-6 md:flex-row md:items-start"
+	>
 		<!-- Avatar -->
-		<div class="flex-shrink-0">
+		<div id="creator-avatar" class="flex-shrink-0">
 			{#if creator.avatar}
 				<Image
 					type="avatar"
@@ -45,7 +49,7 @@
 		</div>
 
 		<!-- Author Info -->
-		<div class="flex-1 text-center md:text-left">
+		<div id="creator-details" class="flex-1 text-center md:text-left">
 			<h1 class="mb-4 text-3xl font-bold text-gray-900 md:text-4xl dark:text-white">
 				{creator.title}
 			</h1>
@@ -59,7 +63,10 @@
 
 			<!-- Skills -->
 			{#if creator.skills && creator.skills.length > 0}
-				<div id="creator-skills" class="flex flex-row flex-wrap justify-center gap-2 md:justify-start">
+				<div
+					id="creator-skills"
+					class="flex flex-row flex-wrap justify-center gap-2 md:justify-start"
+				>
 					{#each creator.skills as skill}
 						<Badge large>
 							{skill}
@@ -68,73 +75,79 @@
 				</div>
 			{/if}
 		</div>
-	</div>
+	</section>
+</div>
 
-	<!-- About Section -->
-	{#if creator.body}
-		<div class="mb-12">
-			<h2 class="mb-6 border-b border-gray-200 pb-2 text-2xl font-bold text-gray-900">About</h2>
-			<div class="prose lg:prose-lg max-w-none text-gray-700">
-				{@html creator.body}
-			</div>
+<!-- About Section -->
+{#if creator.body}
+	<section id="about-creator" class="mb-12">
+		<h2 class="mb-6 border-b border-gray-200 pb-2 text-2xl font-bold text-gray-900">About</h2>
+		<div class="prose lg:prose-lg max-w-none text-gray-700">
+			{@html creator.body}
 		</div>
-	{/if}
+	</section>
+{/if}
 
-	<!-- Projects Section -->
-	{#if creator.projects && creator.projects.length > 0}
-		<div class="mb-12">
-			<h2
-				class="mb-6 border-b border-gray-200 pb-2 text-2xl font-bold text-gray-900 dark:border-gray-700 dark:text-gray-100"
-			>
-				Projects
-			</h2>
-			<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-				{#each creator.projects as project}
-					<!-- Flowbite Card Component -->
-					<Card>
-						<h3 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{project.title}</h3>
-						<p>{project.description}</p>
-						<div class="mt-4 flex space-x-3 lg:mt-6 rtl:space-x-reverse">
-							<Button
-                outline
-								href={project.url}
-								target="_blank"
-								rel="noopener noreferrer"
-							>
-								View Project
-								<svg
-									class="ml-2 h-3.5 w-3.5"
-									aria-hidden="true"
-									xmlns="http://www.w3.org/2000/svg"
-									fill="none"
-									viewBox="0 0 14 10"
-								>
-									<path
-										stroke="currentColor"
-										stroke-linecap="round"
-										stroke-linejoin="round"
-										stroke-width="2"
-										d="M1 5h12m0 0L9 1m4 4L9 9"
-									/>
-								</svg>
-							</Button>
+<!-- Projects Section -->
+{#if creator.projects && creator.projects.length > 0}
+	<section id="projects" class="mb-12">
+		<h2
+			class="mb-6 border-b border-gray-200 pb-2 text-2xl font-bold text-gray-900 dark:border-gray-700 dark:text-gray-100"
+		>
+			Projects
+		</h2>
+		<!-- Featured Projects -->
+		<div id="featured-projects" class="grid grid-cols-1 gap-6 xl:grid-cols-2">
+			{#each creator.projects as project}
+				{#if project.featured}
+					<article id={`project-${project.id}`}>
+						<!-- Flowbite Card Component -->
+						<Card size="xl">
+							<Heading tag="h3" class="mb-2 font-bold tracking-tight">
+								{project.title}
+							</Heading>
+							<P>{project.description}</P>
+							<div class="mt-4 flex justify-between space-x-3 lg:mt-6 rtl:space-x-reverse">
+								<div id="status-tags">
+									<Badge large>Featured</Badge>
+									<Status status={project.status} />
+								</div>
+								<A href={project.url} target="_blank" rel="noopener noreferrer">View project</A>
+							</div>
+						</Card>
+					</article>
+				{/if}
+			{/each}
+		</div>
+		<!-- Other Projects -->
+		<div id="other-projects" class="mt-4 flex w-full">
+			{#each creator.projects as project}
+				{#if !project.featured}
+					<article id={`project-${project.id}`}>
+						<Heading tag="h3" class="mb-2">{project.title}</Heading>
+						<P>{project.description}</P>
+						<div class="mt-4 flex justify-between">
+							<Status status={project.status} />
+							<A href={project.url}>View project</A>
 						</div>
-					</Card>
-				{/each}
-			</div>
+					</article>
+				{/if}
+			{/each}
 		</div>
+	</section>
+{/if}
+
+<div class="my-8 flex w-full justify-center gap-4 text-gray-600 md:my-12 dark:text-gray-300">
+	<Button outline href="/">Return home</Button>
+	<Button href="/creators">View Creators</Button>
+</div>
+
+<!-- Footer -->
+<div
+	class="border-t border-gray-200 pt-6 text-sm text-gray-500 dark:border-gray-700 dark:text-gray-400"
+>
+	<p>Member since {formatDate(creator.date_created)}</p>
+	{#if creator.date_updated}
+		<p>Last updated: {formatDate(creator.date_updated)}</p>
 	{/if}
-
-  <div class="w-full flex gap-4 justify-center my-8 md:my-12 text-gray-600 dark:text-gray-300">
-    <Button outline href="/">Return home</Button>
-    <Button href="/creators">View Creators</Button>
-  </div>
-
-	<!-- Footer -->
-	<div class="border-t border-gray-200 dark:border-gray-700 pt-6 text-sm text-gray-500 dark:text-gray-400">
-		<p>Member since {formatDate(creator.date_created)}</p>
-		{#if creator.date_updated}
-			<p>Last updated: {formatDate(creator.date_updated)}</p>
-		{/if}
-	</div>
 </div>
