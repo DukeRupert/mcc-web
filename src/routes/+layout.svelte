@@ -26,6 +26,13 @@
 	let innerHeight = $state(0);
 </script>
 
+<svelte:head
+	><script
+		defer
+		data-domain="manifoldcollective.com"
+		src="https://plausible.angmar.dev/js/script.js"
+	></script>
+</svelte:head>
 <svelte:window bind:scrollY={y} bind:innerHeight />
 <Navbar />
 <main class="flex min-h-screen w-full bg-white dark:bg-gray-700">

@@ -100,15 +100,4 @@
 		height: auto;
 		will-change: transform; /* Optimize for animation performance */
 	}
-
-	.debug-info {
-		position: absolute;
-		bottom: 10px;
-		right: 10px;
-		background: rgba(0, 0, 0, 0.5);
-		color: white;
-		padding: 8px;
-		border-radius: 4px;
-		font-size: 14px;
-	}
 </style>

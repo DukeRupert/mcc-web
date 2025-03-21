@@ -4,6 +4,7 @@
 	import type { PageProps } from './$types';
 	let { data }: PageProps = $props();
 	let { post } = data;
+	$inspect(post)
 </script>
 
 <Helmet {post} />

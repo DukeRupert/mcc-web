@@ -72,6 +72,7 @@ export interface Post {
     category_id: Category
     image?: Image
     body?: string
+    body_md?: string
     tags?: string[]
 }
 
