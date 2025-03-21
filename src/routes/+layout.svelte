@@ -1,12 +1,12 @@
 <script lang="ts">
 	import '../app.css';
+	import type { LayoutProps } from './$types';
 	import type { SocialLink } from '$lib';
 	import Navbar from '$lib/navbar.svelte';
 	import LeftSidebar from '$lib/page/left-sidebar.svelte';
 	import RightSidebar from '$lib/page/right-sidebar.svelte';
 	import Footer from '$lib/footer.svelte';
-	let { children } = $props();
-
+	let { data, children }: LayoutProps = $props();
 	// Company information
 	const companyName = 'Manifold Creative Collective';
 
@@ -27,7 +27,7 @@
 </script>
 
 <svelte:window bind:scrollY={y} bind:innerHeight />
-<Navbar/>
+<Navbar />
 <main class="flex min-h-screen w-full bg-white dark:bg-gray-700">
 	<LeftSidebar {socialLinks} {y} {innerHeight} />
 
@@ -36,6 +36,6 @@
 		{@render children()}
 	</div>
 
-	<RightSidebar />
+	<RightSidebar categories={data.categories} />
 </main>
 <Footer {companyName} {socialLinks} />
