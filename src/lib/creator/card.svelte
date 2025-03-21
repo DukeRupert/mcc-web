@@ -9,9 +9,9 @@
 	let { creator }: Props = $props();
 </script>
 
-<article id="creator-card" class="w-full max-w-sm mx-auto space-y-4">
+<article id="creator-card" class="w-full max-w-lg mx-auto space-y-4">
 	<Card size="xl">
-		<div class="flex flex-col items-center pb-4 w-full max-w-xs">
+		<div class="flex flex-col items-center pb-4">
 			{#if creator.avatar}
 				<Image
 					id={creator.avatar.id}

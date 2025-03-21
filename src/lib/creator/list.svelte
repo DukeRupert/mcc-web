@@ -7,7 +7,7 @@
 	let { creators }: Props = $props();
 </script>
 
-<ul role="list" class="mx-auto grid max-w-5xl grid-cols-1 md:grid-cols-2 gap-6">
+<ul role="list" class="mx-auto grid max-w-5xl grid-cols-1 xl:grid-cols-2 gap-6">
 	{#each creators as creator}
 		<Card {creator} />
 	{/each}
