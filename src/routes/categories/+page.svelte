@@ -2,7 +2,8 @@
 	import { page } from '$app/state';
 	import { Head, SchemaOrg } from 'svead';
 	import type { SeoConfig, SchemaOrgProps } from 'svead';
-	import Header from '$lib/page/head.svelte';
+	import { Heading, List, Li, A } from 'flowbite-svelte';
+	import Breadcrumbs from '$lib/page/breadcrumbs.svelte';
 	import type { PageProps } from './$types';
 	let { data }: PageProps = $props();
 	let { categories } = data;
@@ -35,7 +36,15 @@
 
 <Head {seo_config} />
 <SchemaOrg schema={schema_org} />
-<Header {...header} />
-{#each categories as category}
-	<p>{category.title}</p>
-{/each}
+<Breadcrumbs />
+
+<Heading tag="h1" class="mt-4 capitalize">Categories</Heading>
+<List class="mt-6">
+	{#each categories as category}
+		<Li class="my-4 p-2"
+			><A class="capitalize" href={`/categories/${category.title.toLowerCase()}?id=${category.id}`}
+				>{category.title}</A
+			></Li
+		>
+	{/each}
+</List>

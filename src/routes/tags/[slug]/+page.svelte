@@ -5,7 +5,6 @@
 	import List from '$lib/post/list.svelte';
 	let { data }: PageProps = $props();
 	let { slug, posts } = data;
-	$inspect(data);
 </script>
 
 <Breadcrumbs />

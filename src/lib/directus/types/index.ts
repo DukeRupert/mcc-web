@@ -1,89 +1,90 @@
 export interface Category {
-    id: number
-    title: string
-    slug: string
-    description?: string
-    image?: Image
+  id: number
+  title: string
+  slug: string
+  description?: string
+  image?: Image
 }
 
 export interface Tag {
-    id: number
-    title: string
+  id: number
+  title: string
 }
 
 export interface Social {
-    platform: string
-    url: string
-    display_text: string
+  platform: string
+  url: string
+  display_text: string
 }
 
 export interface Avatar {
-    id: string
-    height: number
-    width: number
+  id: string
+  height: number
+  width: number
 }
 
 export interface Image {
-    id: string
-    height: number
-    width: number
+  id: string
+  height: number
+  width: number
 }
 
 export interface Creator {
-    id: number
-    user_created: string
-    date_created: string
-    user_updated?: string
-    date_updated?: string
-    title: string
-    slug: string
-    bio?: string
-    avatar?: Avatar
-    email?: string
-    skills?: string[]
-    socials?: Social[]
-    body?: string
-    projects?: Project[]
+  id: number
+  user_created: string
+  date_created: string
+  user_updated?: string
+  date_updated?: string
+  title: string
+  slug: string
+  bio?: string
+  avatar?: Avatar
+  email?: string
+  skills?: string[]
+  socials?: Social[]
+  body?: string
+  projects?: Project[]
 }
 
 export interface Project {
-    id: number
-    sort: any
-    user_created: string
-    date_created: string
-    user_updated: any
-    date_updated: any
-    title: string
-    description?: string
-    url: string
-    status: string
-    featured: boolean
-    creator_id: number
+  id: number
+  sort: any
+  user_created: string
+  date_created: string
+  user_updated: any
+  date_updated: any
+  title: string
+  description?: string
+  url: string
+  status: string
+  featured: boolean
+  creator_id: number
 }
 
 export interface Post {
-    id: number
-    status: string
-    sort: any
-    user_created: string
-    date_created: string
-    user_updated?: string
-    date_updated?: string
-    title: string
-    slug: string
-    description: string
-    date: string
-    creator_id: Creator
-    category_id: Category
-    image?: Image
-    body?: string
-    body_md?: string
-    tags?: Tag[]
+  id: number
+  status: string
+  sort: any
+  user_created: string
+  date_created: string
+  user_updated?: string
+  date_updated?: string
+  title: string
+  slug: string
+  description: string
+  date: string
+  creator_id: Creator
+  category_id: Category
+  image?: Image
+  body?: string
+  body_md?: string
+  tags?: number | Tag[]
 }
 
 export interface Schema {
-    category: Category[],
-    creator: Creator[],
-    project: Project[],
-    post: Post[],
+  category: Category[],
+  creator: Creator[],
+  project: Project[],
+  post: Post[],
+  tag: Tag[]
 }

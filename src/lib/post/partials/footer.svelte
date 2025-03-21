@@ -25,8 +25,8 @@
 			<h3 class="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-200">Tags</h3>
 			<div class="flex flex-wrap gap-2">
 				{#each post.tags as tag}
-					<a href={`/tag/${tag.toLowerCase().replace(/\s+/g, '-')}`}>
-						<Badge large>#{tag}</Badge>
+					<a href={`/tags/${tag.tag_id.title}?id=${tag.tag_id.id}`}>
+						<Badge large rounded>#{tag.tag_id.title}</Badge>
 					</a>
 				{/each}
 			</div>
