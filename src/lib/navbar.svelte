@@ -22,7 +22,6 @@
 			<NavLi href="/">Home</NavLi>
 			<NavLi href="/creators">Creators</NavLi>
 			<NavLi href="/about-us">About us</NavLi>
-			<NavLi href="/contact-us">Contact us</NavLi>
 			<NavLi><DarkMode /></NavLi>
 		</NavUl>
 	</Navbar>
