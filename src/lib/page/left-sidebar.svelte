@@ -43,8 +43,17 @@
                 <div class="scroll-animation-container">
                     <div class="image-container">
                         <img
-                            src="/logo/Avatar.png"
+                            src="/logo/MCC-LOGO-Fin-Var-Trans.png"
                             alt="Animated on scroll"
+							class="block dark:hidden"
+                            style="transform: rotate({rotation}deg) scale({scaleFactor}); transition: transform 0.1s ease-out;"
+                            height=150
+                            width=150
+                        />
+						<img
+                            src="/logo/MANIFOLD-PURPLE.png"
+                            alt="Animated on scroll"
+							class="hidden dark:block"
                             style="transform: rotate({rotation}deg) scale({scaleFactor}); transition: transform 0.1s ease-out;"
                             height=150
                             width=150

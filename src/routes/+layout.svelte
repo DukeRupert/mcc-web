@@ -32,7 +32,7 @@
 	<LeftSidebar {socialLinks} {y} {innerHeight} />
 
 	<!-- Part 2: Middle section, takes remaining space, always visible -->
-	<div class="flex-1 px-2 pt-2 pb-18 md:ml-[25%] md:px-4 lg:mr-[20%] lg:px-6">
+	<div class="flex-1 px-2 pt-4 pb-18 md:ml-[25%] md:px-4 lg:mr-[20%] lg:px-6">
 		{@render children()}
 	</div>
 
