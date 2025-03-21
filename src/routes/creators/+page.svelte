@@ -2,7 +2,7 @@
 	import { page } from '$app/state';
 	import { Head, SchemaOrg } from 'svead';
 	import type { SeoConfig, SchemaOrgProps } from 'svead';
-	import Header from '$lib/page/head.svelte'
+	import Header from '$lib/page/head.svelte';
 	import List from '$lib/creator/list.svelte';
 	import type { PageProps } from './$types';
 	let { data }: PageProps = $props();
@@ -27,11 +27,11 @@
 	};
 
 	const header = {
-        eyebrow: "Our Team",
-        title: "Meet The Manifold Creators",
-        description: "Connect with the diverse talent behind The Manifold Creator Collective—skilled TTRPG designers, artists, and innovators crafting exceptional content for Draw Steel and tabletop roleplaying games."
-    }
-
+		eyebrow: 'Our Team',
+		title: 'Meet The Manifold Creators',
+		description:
+			'Connect with the diverse talent behind The Manifold Creator Collective—skilled TTRPG designers, artists, and innovators crafting exceptional content for Draw Steel and tabletop roleplaying games.'
+	};
 </script>
 
 <Head {seo_config} />

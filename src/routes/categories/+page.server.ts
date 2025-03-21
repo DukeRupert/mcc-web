@@ -1,8 +1,8 @@
-import type { PageLoad } from './$types';
+import type { PageServerLoad } from './$types';
 import client from '$lib/directus/client';
 import { readItems } from '@directus/sdk';
 
-export const load: PageLoad = async ({ }) => {
+export const load: PageServerLoad = async ({ }) => {
   const categories = await client.request(readItems('category', {
     fields: ['*'],
   }))
