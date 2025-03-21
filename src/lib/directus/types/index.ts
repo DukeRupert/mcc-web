@@ -6,6 +6,11 @@ export interface Category {
     image?: Image
 }
 
+export interface Tag {
+    id: number
+    title: string
+}
+
 export interface Social {
     platform: string
     url: string
@@ -73,7 +78,7 @@ export interface Post {
     image?: Image
     body?: string
     body_md?: string
-    tags?: string[]
+    tags?: Tag[]
 }
 
 export interface Schema {
