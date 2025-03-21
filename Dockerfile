@@ -4,7 +4,7 @@ FROM node:20-alpine
 # Set working directory
 WORKDIR /app
 
-# Install pnpm (as it seems you're using it based on your package.json)
+# Install pnpm
 RUN npm install -g pnpm
 
 # Copy package.json and pnpm-lock.yaml (if exists)
@@ -17,11 +17,10 @@ RUN pnpm install --no-frozen-lockfile
 # Copy the rest of the application
 COPY . .
 
-# Set environment variables
-ENV PUBLIC_DIRECTUS_URL=http://directus:8055
+# Define build arg with a default value that can be overridden
+ARG PUBLIC_DIRECTUS_URL=https://content.manifoldcollective.com
 
-# Make sure the environment variable is available during build
-ARG PUBLIC_DIRECTUS_URL=http://directus:8055
+# Set environment variable from build arg
 ENV PUBLIC_DIRECTUS_URL=${PUBLIC_DIRECTUS_URL}
 
 # Create .env file with Directus configuration
