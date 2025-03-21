@@ -12,7 +12,7 @@
 	const currentYear = new Date().getFullYear();
 </script>
 
-<footer class="bg-white dark:bg-gray-900">
+<footer class="bg-white dark:bg-gray-900 relative z-50">
 	<div class="mx-auto max-w-7xl px-6 py-12 md:flex md:items-center md:justify-between lg:px-8">
 		<div class="flex justify-center gap-x-6 md:order-2">
 			{#each socialLinks as social}
