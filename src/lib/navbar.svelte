@@ -18,6 +18,8 @@
 					src="/logo/MANIFOLD_LIGHT_200px.png"
 					class="me-3 block h-6 sm:h-9 dark:hidden"
 					alt="Manifold Creator Collective logo"
+					width="144"
+					height="36"
 				/>
 			</picture>
 

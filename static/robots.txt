@@ -4,8 +4,10 @@ Allow: /
 Allow: /about-us
 Allow: /creators/
 Allow: /posts/
-Allow: /tags/
 Allow: /categories/
+
+# Disallow tags section
+Disallow: /tags/
 
 # Mark these routes as priority for crawling (higher crawl rate)
 Allow: /posts/$
