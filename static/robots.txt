@@ -1,0 +1,25 @@
+# robots.txt for manifoldcollective.com
+User-agent: *
+Allow: /
+Allow: /about-us
+Allow: /creators/
+Allow: /posts/
+Allow: /tags/
+Allow: /categories/
+
+# Mark these routes as priority for crawling (higher crawl rate)
+Allow: /posts/$
+Allow: /posts/*/
+Allow: /creators/$
+Allow: /creators/*/
+
+# Disallow crawling of the content subdomain
+Host: manifoldcollective.com
+Disallow: /content/
+
+# Specify separate rule for content subdomain
+Host: content.manifoldcollective.com
+Disallow: /
+
+# Sitemap
+Sitemap: https://manifoldcollective.com/sitemap.xml

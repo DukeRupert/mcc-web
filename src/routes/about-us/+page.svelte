@@ -50,7 +50,7 @@
 		<div class="mt-16 grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:gap-x-8">
 			<div>
 				<img
-					src="https://images.unsplash.com/photo-1708863828286-63b56b08f292?q=80&w=2012&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+					src="https://as1.ftcdn.net/v2/jpg/05/35/17/70/1000_F_535177057_ESVHzf3IXdiunyM6GuNQXYAz5YScGWbZ.jpg"
 					alt="Game designers working on tabletop RPG materials and maps."
 					class="aspect-3/2 w-full rounded-lg object-cover"
 				/>
@@ -64,7 +64,7 @@
 			</div>
 			<div>
 				<img
-					src="https://images.unsplash.com/photo-1549056630-ee2626bb5ad5?q=80&w=2012&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+					src="https://as1.ftcdn.net/v2/jpg/05/94/42/66/1000_F_594426673_fpBGZtkNtXXnKWo8tHEy33JeULdjHqdn.jpg"
 					alt="Game masters and playtesters at a table playing a tabletop RPG."
 					class="aspect-3/2 w-full rounded-lg object-cover"
 				/>
