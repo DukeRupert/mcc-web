@@ -7,8 +7,10 @@
 	let { posts }: Props = $props();
 </script>
 
-<ul role="list" class="grid grid-cols-1 justify-items-center gap-6">
+<ul role="list" class="grid grid-cols-1 justify-items-center gap-6" aria-label="Posts list">
 	{#each posts as post}
-		<Card {post} />
+		<li>
+			<Card {post} />
+		</li>
 	{/each}
 </ul>

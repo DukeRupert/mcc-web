@@ -11,9 +11,21 @@
 </script>
 
 {#if creator}
-	<Card color="primary" size="lg" padding="none">
+	<Card
+		color="primary"
+		size="lg"
+		padding="none"
+		role="article"
+		aria-labelledby={`post-title-${post.slug}`}
+	>
 		{#if post.image && typeof post.image !== 'string'}
-			<Image id={post.image.id} width={800} height={450} className="rounded-t-md" />
+			<Image
+				id={post.image.id}
+				width={800}
+				height={450}
+				className="rounded-t-md"
+				alt={post.image.description || `Featured image for ${post.title}`}
+			/>
 		{/if}
 		<div class="p-4">
 			<Header {post} />
