@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Avatar } from 'flowbite-svelte';
-	type imageType = '' | 'avatar'
-	type presetKey = '' | 'avatar'
+	type imageType = '' | 'avatar';
+	type presetKey = '' | 'avatar';
 	// Image props
 	export let id = ''; // Required: The Directus file ID
 	export let width: number; // Optional: Image width
@@ -28,7 +28,7 @@
 		// Add width and/or height if provided
 		if (width) params.push(`width=${width}`);
 		if (height) params.push(`height=${height}`);
-		if (key) params.push(`key=${key}`)
+		if (key) params.push(`key=${key}`);
 
 		// Add parameters to URL if there are any
 		if (params.length > 0) {
@@ -40,7 +40,7 @@
 </script>
 
 {#if type === 'avatar'}
-<Avatar size="lg" src={imageUrl} border />
+	<Avatar size="lg" src={fullImageUrl} border />
 {:else}
-<img src={fullImageUrl} {alt} class={className} {width} {height} />
+	<img src={fullImageUrl} {alt} class={className} {width} {height} />
 {/if}

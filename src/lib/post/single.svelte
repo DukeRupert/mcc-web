@@ -8,9 +8,7 @@
 		post: Post;
 	}
 	let { post }: Props = $props();
-
 </script>
-
 
 <article class="mx-auto max-w-4xl px-4 py-8 sm:px-6 lg:px-8">
 	<Header {post} />
@@ -21,8 +19,8 @@
 			<Image
 				id={post.image.id}
 				alt={post.title}
-				height={post.image.height}
-				width={post.image.width}
+				height={450}
+				width={800}
 				className="w-full h-auto object-cover"
 			/>
 		</div>
