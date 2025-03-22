@@ -36,7 +36,7 @@
 </script>
 
 <!-- left-sidebar: Hidden on small screens, max 25% width -->
-<div class="fixed top-18 left-0 hidden h-[calc(100vh-72px)] overflow-y-auto md:block md:w-1/4">
+<div class="fixed top-22 left-0 hidden h-[calc(100vh-72px)] overflow-y-auto md:block md:w-1/4">
 	<div class="p-2">
 		<Card color="primary" padding="md" class="mx-auto mt-2">
 			<div class="flex flex-col items-center pb-4">

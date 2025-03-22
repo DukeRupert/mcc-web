@@ -49,11 +49,16 @@
 		</div>
 		<div class="mt-16 grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:gap-x-8">
 			<div>
-				<img
-					src="https://as1.ftcdn.net/v2/jpg/05/35/17/70/1000_F_535177057_ESVHzf3IXdiunyM6GuNQXYAz5YScGWbZ.jpg"
-					alt="Game designers working on tabletop RPG materials and maps."
-					class="aspect-3/2 w-full rounded-lg object-cover"
-				/>
+				<picture>
+					<source srcset="/img/AdobeStock_535177057_x800.avif" type="image/avif" />
+					<img
+						src="/img/AdobeStock_535177057_x800.jpeg"
+						alt="Game masters and playtesters at a table playing a tabletop RPG."
+						class="aspect-3/2 w-full rounded-lg object-cover"
+						width="800"
+						height="533"
+					/>
+				</picture>
 				<Heading tag="h3" class="mt-4 font-medium">Game Design & Writing</Heading>
 				<P class="mt-8 text-base">
 					Our collective brings together creative minds crafting innovative game mechanics and
@@ -63,11 +68,17 @@
 				</P>
 			</div>
 			<div>
-				<img
-					src="https://as1.ftcdn.net/v2/jpg/05/94/42/66/1000_F_594426673_fpBGZtkNtXXnKWo8tHEy33JeULdjHqdn.jpg"
-					alt="Game masters and playtesters at a table playing a tabletop RPG."
-					class="aspect-3/2 w-full rounded-lg object-cover"
-				/>
+				<picture>
+					<source srcset="/img/AdobeStock_594426673_x800.avif" type="image/avif" />
+					<img
+						src="/img/AdobeStock_594426673_x800.jpeg"
+						alt="Game masters and playtesters at a table playing a tabletop RPG."
+						class="aspect-3/2 w-full rounded-lg object-cover"
+						width="800"
+						height="533"
+					/>
+				</picture>
+
 				<Heading tag="h3" class="mt-4 font-medium">Editing & Playtesting</Heading>
 				<P class="mt-8 text-base">
 					Detail-oriented editors refine and polish game materials while experienced playtesters
