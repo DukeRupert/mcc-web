@@ -13,18 +13,17 @@
 	import { onMount } from 'svelte';
 
 	// Props for the component
-	let maxRotation: number = 45; // Maximum rotation angle for wiggle (reduced from 360)
 	let rotationSpeed: number = 1.5; // Increased to make oscillation more noticeable
-	let minScale: number = 1.0; // Minimum scale factor
-	let maxScale: number = 1.1; // Maximum scale factor
-	let pulseFrequency: number = 0.75; // Controls how fast the pulse effect cycles
+	let minScale: number = 0.95; // Minimum scale factor
+	let maxScale: number = 1.05; // Maximum scale factor
+	let pulseFrequency: number = 0.5; // Controls how fast the pulse effect cycles
 	let documentHeight = $state(0);
 
 	// Calculated values for animation
 	let scrollPercentage = $derived(Math.min(y / (documentHeight - innerHeight), 1) || 0);
 
 	// Use sine function for oscillating left-right wiggle motion
-	let rotation = $derived(Math.sin(scrollPercentage * Math.PI * rotationSpeed) * maxRotation);
+	let rotation = $derived(scrollPercentage * rotationSpeed);
 
 	// Calculate pulse effect using sine wave based on scroll position
 	let pulsePhase = $derived(scrollPercentage * pulseFrequency * Math.PI * 2);
@@ -43,13 +42,16 @@
 			<div class="flex flex-col items-center pb-4">
 				<div class="scroll-animation-container">
 					<div class="image-container">
-						<img
-							src="/logo/MCC-LOGO-Fin-Var-Trans.png"
-							alt="Animated on scroll"
-							style="transform: rotate({rotation}deg) scale({scaleFactor}); transition: transform 1.5s cubic-bezier(0.34, 1.56, 0.64, 1);"
-							height="150"
-							width="150"
-						/>
+						<picture>
+							<source srcset="/logo/MCC_LOGO_200px.avif" type="image/avif" />
+							<img
+								src="/logo/MCC_LOGO_200px.png"
+								alt="Animated on scroll"
+								style="transform: rotate({rotation}deg) scale({scaleFactor}); transition: transform 1.5s cubic-bezier(0.34, 1.56, 0.64, 1);"
+								height="150"
+								width="150"
+							/>
+						</picture>
 					</div>
 				</div>
 				<div class="mt-4 flex space-x-3 lg:mt-6">
