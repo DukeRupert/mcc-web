@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Category } from '$lib/directus/types';
-	import { Badge, Card, Heading, Spinner} from 'flowbite-svelte';
+	import { Badge, Card, Heading, Spinner } from 'flowbite-svelte';
 	interface Props {
 		categories: Promise<Category[]>;
 	}
@@ -10,12 +10,12 @@
 <!-- Part 3: Only visible on large screens, max 15% width -->
 <div class="fixed top-18 right-0 hidden h-[calc(100vh-72px)] overflow-y-auto lg:block lg:w-[20%]">
 	<div class="md:p4 p-2">
-		<Card padding="md" class="mx-auto mt-2">
+		<Card color="primary" padding="md" class="mx-auto mt-2">
 			<div class="p-2">
 				<Heading tag="h4">Categories</Heading>
 				<div id="categories" class="mt-4 flex flex-wrap gap-4">
-					{#await data }
-					<Spinner />
+					{#await data}
+						<Spinner />
 					{:then categories}
 						{#each categories as c}
 							<a href={`/categories/${c.slug}`}>

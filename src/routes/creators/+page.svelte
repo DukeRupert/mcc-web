@@ -27,7 +27,7 @@
 	};
 
 	const header = {
-		eyebrow: 'Our Team',
+		eyebrow: 'Our Community',
 		title: 'Meet The Manifold Creators',
 		description:
 			'Connect with the diverse talent behind The Manifold Creator Collective—skilled TTRPG designers, artists, and innovators crafting exceptional content for Draw Steel and tabletop roleplaying games.'

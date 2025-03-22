@@ -35,7 +35,7 @@
 </svelte:head>
 <svelte:window bind:scrollY={y} bind:innerHeight />
 <Navbar />
-<main class="flex min-h-screen w-full bg-white dark:bg-gray-700">
+<main class="flex min-h-screen w-full bg-white dark:bg-gray-900">
 	<LeftSidebar {socialLinks} {y} {innerHeight} />
 
 	<!-- Part 2: Middle section, takes remaining space, always visible -->

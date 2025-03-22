@@ -13,7 +13,7 @@
 </script>
 
 {#if creator}
-	<Card size="lg" padding="none">
+	<Card color="primary" size="lg" padding="none">
 		{#if post.image && typeof post.image !== 'string'}
 			<Image
 				id={post.image.id}
