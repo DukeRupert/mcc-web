@@ -10,10 +10,7 @@
 </script>
 
 <div>
-	<Navbar
-		class="w-full divide-gray-200 border-gray-200 bg-white px-2 py-2.5 text-gray-500 sm:px-4 dark:divide-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400"
-		navContainerClass="w-full text-gray-500 dark:text-gray-400 border-gray-200 dark:border-gray-700 divide-gray-200 dark:divide-gray-700 px-2 sm:px-4 py-2.5 w-full bg-white shadow-md dark:bg-gray-800"
-	>
+	<Navbar class="relative max-w-none shadow-md" navContainerClass="max-w-none">
 		<NavBrand href="/">
 			<picture>
 				<source srcset="/logo/MANIFOLD_LIGHT_120px.avif" type="image/avif" />

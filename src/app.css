@@ -6,16 +6,28 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-primary-50: #fffcee;
-  --color-primary-100: #fff7d6;
-  --color-primary-200: #ffee9a;
-  --color-primary-300: #ffdf5d;
-  --color-primary-400: #ffcf30;
-  --color-primary-500: #ffbe0b;
-  --color-primary-600: #f5a300;
-  --color-primary-700: #e67e00;
-  --color-primary-800: #cc5500;
-  --color-primary-900: #a84100;
+  --color-primary-50: #fef8ec;
+  --color-primary-100: #fbebca;
+  --color-primary-200: #f7d690;
+  --color-primary-300: #f2b749;
+  --color-primary-400: #f0a42f;
+  --color-primary-500: #e98317;
+  --color-primary-600: #ce6011;
+  --color-primary-700: #ab4212;
+  --color-primary-800: #8b3415;
+  --color-primary-900: #732c14;
+  --color-primary-950: #421406;
+  --color-secondary-50: #f3f8fc;
+  --color-secondary-100: #e7f0f7;
+  --color-secondary-200: #c9dfee;
+  --color-secondary-300: #9ac6df;
+  --color-secondary-400: #63a7cd;
+  --color-secondary-500: #408cb7;
+  --color-secondary-600: #3279a6;
+  --color-secondary-700: #275b7d;
+  --color-secondary-800: #234d69;
+  --color-secondary-900: #224158;
+  --color-secondary-950: #172a3a;
 }
 
 @layer base {
