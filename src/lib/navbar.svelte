@@ -16,7 +16,7 @@
 				<source srcset="/logo/MANIFOLD_LIGHT_60px.avif" type="image/avif" />
 				<img
 					src="/logo/MANIFOLD_LIGHT_200px.png"
-					class="me-3 block h-6 sm:h-9 dark:hidden"
+					class="me-3 block h-9 w-auto sm:h-12 dark:hidden"
 					alt="Manifold Creator Collective logo"
 					width="144"
 					height="36"
@@ -25,7 +25,11 @@
 
 			<picture>
 				<source srcset="/logo/MANIFOLD_DARK_60px.avif" type="image/avif" />
-				<img src="/logo/MANIFOLD_DARK_200px.png" class="me-3 hidden h-6 sm:h-9 dark:block" alt="" />
+				<img
+					src="/logo/MANIFOLD_DARK_200px.png"
+					class="me-3 hidden h-9 w-auto sm:h-12 dark:block"
+					alt=""
+				/>
 			</picture>
 
 			<span class="sr-only">Manifold Creator Collective</span>
