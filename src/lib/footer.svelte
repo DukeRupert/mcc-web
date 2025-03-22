@@ -21,7 +21,7 @@
 					class="hover:bg-primary-100 hover:text-primary-600 inline-flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-gray-700 transition-colors duration-200"
 				>
 					<span class="sr-only">{social.name}</span>
-					<img class="size-6" src={social.icon} alt={social.name} />
+					<img class="size-6" src={social.icon} alt={`${social.name} logo`} />
 				</A>
 			{/each}
 		</div>

@@ -10,12 +10,12 @@
 </script>
 
 <div>
-	<Navbar class="bg-slate-50 dark:bg-gray-800">
+	<Navbar class="bg-white dark:bg-gray-800">
 		<NavBrand href="/">
 			<picture>
-				<source srcset="/logo/MANIFOLD_LIGHT_60px.avif" type="image/avif" />
+				<source srcset="/logo/MANIFOLD_LIGHT_120px.avif" type="image/avif" />
 				<img
-					src="/logo/MANIFOLD_LIGHT_200px.png"
+					src="/logo/MANIFOLD_LIGHT_120px.png"
 					class="me-3 block h-9 w-auto sm:h-12 dark:hidden"
 					alt="Manifold Creator Collective logo"
 					width="144"
@@ -24,11 +24,11 @@
 			</picture>
 
 			<picture>
-				<source srcset="/logo/MANIFOLD_DARK_60px.avif" type="image/avif" />
+				<source srcset="/logo/MANIFOLD_DARK_120px.avif" type="image/avif" />
 				<img
-					src="/logo/MANIFOLD_DARK_200px.png"
+					src="/logo/MANIFOLD_DARK_120px.png"
 					class="me-3 hidden h-9 w-auto sm:h-12 dark:block"
-					alt=""
+					alt="Manifold Creative Collective logo"
 				/>
 			</picture>
 
