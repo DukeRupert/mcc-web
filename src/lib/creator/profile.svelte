@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Badge, Button, Card, Heading, P, A } from 'flowbite-svelte';
+	import { Badge, Button, Card, Heading, Hr, P, A } from 'flowbite-svelte';
 	import Image from '$lib/directus/image.svelte';
 	import Socials from '$lib/creator/partials/socials.svelte';
 	import Status from '$lib/creator/partials/status.svelte';
@@ -10,6 +10,7 @@
 
 	// Props
 	let { creator }: Props = $props();
+	$inspect(creator);
 
 	// Format date helper function
 	function formatDate(dateString: string): string {
@@ -91,48 +92,56 @@
 <!-- Projects Section -->
 {#if creator.projects && creator.projects.length > 0}
 	<section id="projects" class="mb-12">
-		<h2
-			class="mb-6 border-b border-gray-200 pb-2 text-2xl font-bold text-gray-900 dark:border-gray-700 dark:text-gray-100"
-		>
-			Projects
-		</h2>
+		<Heading tag="h3" class="mb-6">Projects</Heading>
+		<Hr classHr="my-8" />
 		<!-- Featured Projects -->
-		<div id="featured-projects" class="grid grid-cols-1 gap-6 xl:grid-cols-2">
-			{#each creator.projects as project}
-				{#if project.featured}
-					<article id={`project-${project.id}`}>
-						<!-- Flowbite Card Component -->
-						<Card size="xl">
-							<Heading tag="h3" class="mb-2 font-bold tracking-tight">
-								{project.title}
-							</Heading>
-							<P>{project.description}</P>
-							<div class="mt-4 flex justify-between space-x-3 lg:mt-6 rtl:space-x-reverse">
-								<div id="status-tags">
-									<Badge large>Featured</Badge>
-									<Status status={project.status} />
+		<div id="featured-projects">
+			<ul role="list" class="grid grid-cols-1 gap-6 xl:grid-cols-2">
+				{#each creator.projects as project}
+					{#if project.featured}
+						<article id={`project-${project.id}`} class="w-full">
+							<!-- Flowbite Card Component -->
+							<Card padding="md" size="xl" class="h-full border-primary-600">
+								<Heading tag="h3" class="mb-2 font-bold tracking-tight">
+									{project.title}
+								</Heading>
+								<P>{project.description}</P>
+								<div class="mt-auto flex justify-between space-x-3 rtl:space-x-reverse">
+									<div id="status-tags">
+										<Badge large>Featured</Badge>
+										<Status status={project.status} />
+									</div>
+									<A href={project.url} target="_blank" rel="noopener noreferrer">View project</A>
 								</div>
-								<A href={project.url} target="_blank" rel="noopener noreferrer">View project</A>
-							</div>
-						</Card>
-					</article>
-				{/if}
-			{/each}
+							</Card>
+						</article>
+					{/if}
+				{/each}
+			</ul>
 		</div>
 		<!-- Other Projects -->
-		<div id="other-projects" class="mt-4 flex w-full">
-			{#each creator.projects as project}
-				{#if !project.featured}
-					<article id={`project-${project.id}`}>
-						<Heading tag="h3" class="mb-2">{project.title}</Heading>
-						<P>{project.description}</P>
-						<div class="mt-4 flex justify-between">
-							<Status status={project.status} />
-							<A href={project.url}>View project</A>
-						</div>
-					</article>
-				{/if}
-			{/each}
+		<div
+			id="other-projects"
+			class="mt-6 overflow-hidden bg-white shadow-sm sm:rounded-md dark:bg-gray-700"
+		>
+			<ul role="list" class="divide-y divide-gray-200">
+				{#each creator.projects as project}
+					{#if !project.featured}
+						<li>
+							<article id={`project-${project.id}`}>
+								<Card padding="md" size="xl">
+									<Heading tag="h3" class="mb-2">{project.title}</Heading>
+									<P>{project.description}</P>
+									<div class="mt-4 flex justify-between">
+										<Status status={project.status} />
+										<A href={project.url}>View project</A>
+									</div>
+								</Card>
+							</article>
+						</li>
+					{/if}
+				{/each}
+			</ul>
 		</div>
 	</section>
 {/if}
