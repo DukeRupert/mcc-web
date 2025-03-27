@@ -1,14 +1,16 @@
 <script lang="ts">
+	import { page } from '$app/state';
 	import type { Post } from '$lib/directus/types/index';
 	import { onMount } from 'svelte';
 	import { formatDate, getReadTime } from '$lib/post/utils';
-	import { A, Avatar, Badge } from 'flowbite-svelte';
+	import { A, Avatar, Badge, Heading } from 'flowbite-svelte';
 	interface Props {
 		post: Post;
 	}
 
 	let { post }: Props = $props();
 	let readTime = $state(0);
+	$inspect(page.url.pathname)
 
 	onMount(() => {
 		if (post.body) {
@@ -35,12 +37,23 @@
 	<!-- Title -->
 	<div class="block">
 		<A href={`/posts/${post.slug}`}>
-			<h1
-				id={`post-title-${post.slug}`}
-				class="my-4 text-3xl font-bold text-gray-900 md:text-4xl dark:text-gray-50"
-			>
-				{post.title}
-			</h1>
+			{#if page.url.pathname === '/'}
+				<Heading
+					tag="h2"
+					id={`post-title-${post.slug}`}
+					class="my-4 text-3xl font-bold text-gray-900 md:text-4xl dark:text-gray-50"
+				>
+					{post.title}
+				</Heading>
+			{:else}
+				<Heading
+					tag="h1"
+					id={`post-title-${post.slug}`}
+					class="my-4 text-3xl font-bold text-gray-900 md:text-4xl dark:text-gray-50"
+				>
+					{post.title}
+				</Heading>
+			{/if}
 		</A>
 	</div>
 	<!-- Creator -->

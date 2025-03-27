@@ -82,8 +82,9 @@
 <!-- About Section -->
 {#if creator.body}
 	<section id="about-creator" class="mb-12">
-		<h2 class="mb-6 border-b border-gray-200 pb-2 text-2xl font-bold text-gray-900">About</h2>
-		<div class="prose lg:prose-lg max-w-none text-gray-700">
+		<Heading tag="h2">About</Heading>
+		<Hr class="mb-6"/>
+		<div class="prose dark:prose-invert lg:prose-lg max-w-none">
 			{@html creator.body}
 		</div>
 	</section>
@@ -92,14 +93,14 @@
 <!-- Projects Section -->
 {#if creator.projects && creator.projects.length > 0}
 	<section id="projects" class="mb-12">
-		<Heading tag="h3" class="mb-6">Projects</Heading>
+		<Heading tag="h2" class="mb-6">Projects</Heading>
 		<Hr classHr="my-8" />
 		<!-- Featured Projects -->
 		<div id="featured-projects">
 			<ul role="list" class="grid grid-cols-1 gap-6 xl:grid-cols-2">
 				{#each creator.projects as project}
 					{#if project.featured}
-						<article id={`project-${project.id}`} class="w-full">
+						<article id={`project-${project.id}`} class="w-full rounded-md">
 							<!-- Flowbite Card Component -->
 							<Card padding="md" size="xl" class="h-full border-primary-600">
 								<Heading tag="h3" class="mb-2 font-bold tracking-tight">
@@ -128,7 +129,7 @@
 				{#each creator.projects as project}
 					{#if !project.featured}
 						<li>
-							<article id={`project-${project.id}`}>
+							<article id={`project-${project.id}`} class="rounded-md">
 								<Card padding="md" size="xl">
 									<Heading tag="h3" class="mb-2">{project.title}</Heading>
 									<P>{project.description}</P>
