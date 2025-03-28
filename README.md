@@ -1,38 +1,88 @@
-# sv
+# The Manifold Creator Collective
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+![Manifold Collective Logo](https://manifoldcollective.com/logo/MANIFOLD_LIGHT.png)
 
-## Creating a project
+## About The Manifold
 
-If you're seeing this, you've probably already done this step. Congrats!
+The Manifold Creator Collective (MCC) unites passionate TTRPG designers developing content for Draw Steel and diverse tabletop roleplaying games. Our community showcases original creations, facilitates playtesting, offers professional design services, and shares expert resources. From established designers to newcomers, MCC provides tools, collaboration opportunities, and industry connections to advance your TTRPG projects. Join The Manifold and shape the future of tabletop gaming through our collaborative design community.
 
-```bash
-# create a new project in the current directory
-npx sv create
+## Project Overview
 
-# create a new project in my-app
-npx sv create my-app
-```
+This repository contains the code for The Manifold's web platform - a responsive blog and community hub built with modern web technologies to support TTRPG creators.
 
-## Developing
+## Technologies Used
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+- **Frontend Framework**: Sveltekit
+- **CSS Framework**: TailwindCSS with Flowbite components
+- **Backend**: NodeJS
+- **CMS**: Directus
 
-```bash
-npm run dev
+## Getting Started
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+### Prerequisites
 
-## Building
+- [Node.js](https://nodejs.org/) (LTS version recommended)
+- [pnpm](https://pnpm.io/) for package management
 
-To create a production version of your app:
+### Installation
 
-```bash
-npm run build
-```
+1. Clone the repository
+   ```bash
+   git clone https://github.com/your-organization/manifold-collective.git
+   cd manifold-collective
+   ```
 
-You can preview the production build with `npm run preview`.
+2. Install dependencies
+   ```bash
+   pnpm i
+   ```
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+3. Set up environment variables
+   Create a `.env` file in the root directory with the following variables:
+   ```
+   PUBLIC_DIRECTUS_URL=https://content.manifoldcollective.com
+   ```
+
+4. Start the development server
+   ```bash
+   pnpm run dev
+   ```
+
+5. Open your browser and navigate to `http://localhost:5173`
+
+## Features
+
+- Responsive design optimized for all devices
+- Customizable templates for TTRPG content
+- Integrated tools for showcasing creative work
+- Resource sharing capabilities
+- Community building features
+
+## Deployment
+
+The project uses a simple CI/CD pipeline:
+
+1. **Trigger**: Updating the version number in `package.json` and pushing to the master branch automatically triggers the deployment workflow
+2. **Build Process**: GitHub Actions builds a Docker image and pushes it to Docker Hub under the tags `dukerupert/mcc-web:latest` and `dukerupert/mcc-web:{version}`
+3. **Deployment**: Watchtower running on the VPS detects the updated Docker image and automatically pulls and deploys the new version
+
+The GitHub workflow and Dockerfile are included in the repository.
+
+## Contributing
+
+We welcome contributions from the community! Please read our contributing guidelines before submitting pull requests.
+
+## License
+
+Specify your license information here.
+
+## Contact
+
+- Website: [manifoldcollective.com](https://manifoldcollective.com)
+- Email: [logan@fireflysoftware.dev](mailto:logan@fireflysoftware.dev)
+
+## Acknowledgements
+
+- All the contributors and TTRPG creators who are part of The Manifold
+- The Draw Steel community
+- Open source technologies that make this project possible
