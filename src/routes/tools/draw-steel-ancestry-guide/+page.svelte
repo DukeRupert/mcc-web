@@ -1,5 +1,6 @@
 <script lang="ts">
 	import {
+		Badge,
 		Card,
 		Heading,
 		P,
@@ -42,10 +43,23 @@
 <Head {seo_config} />
 <SchemaOrg schema={schema_org} />
 <Header {...header} />
-
-<div class="grid grid-cols-1 gap-4">
+<div class="mb-6 flex flex-wrap gap-2">
+	<Badge large href="#devil" rounded color="red">Devil</Badge>
+	<Badge large href="#dragon-knight" rounded color="purple">Dragon Knight</Badge>
+	<Badge large href="#dwarf" rounded color="dark">Dwarf</Badge>
+	<Badge large href="#elf-wode" rounded color="green">Wode Elf</Badge>
+	<Badge large href="#elf-high" rounded color="yellow">High Elf</Badge>
+	<Badge large href="#hakaan" rounded color="indigo">Hakaan</Badge>
+	<Badge large href="#human" rounded>Human</Badge>
+	<Badge large href="#memonek" rounded color="purple">Memonek</Badge>
+	<Badge large href="#orc" rounded color="green">Orc</Badge>
+	<Badge large href="#polder" rounded color="dark">Polder</Badge>
+	<Badge large href="#revenant" rounded color="indigo">Revenant</Badge>
+	<Badge large href="#time-raider" rounded color="pink">Time Raider</Badge>
+</div>
+<div class="grid grid-cols-1 gap-6 xl:grid-cols-2">
 	<!-- Devil -->
-	<Card padding="none" size="xl" class="rounded-md">
+	<Card id="devil" padding="none" size="xl" class="rounded-md">
 		<div class="rounded-t-md p-4">
 			<Heading tag="h3" class="mb-2">Devil</Heading>
 			<P>
@@ -110,7 +124,7 @@
 	</Card>
 
 	<!-- Dragon Knight -->
-	<Card padding="none" size="xl" class="rounded-md">
+	<Card id="dragon-knight" padding="none" size="xl" class="rounded-md">
 		<div class="rounded-t-md p-4">
 			<Heading tag="h3" class="mb-2">Dragon Knight</Heading>
 			<P>
@@ -171,7 +185,7 @@
 	</Card>
 
 	<!-- Dwarf -->
-	<Card padding="none" size="xl" class="rounded-md">
+	<Card id="dwarf" padding="none" size="xl" class="rounded-md">
 		<div class="rounded-t-md p-4">
 			<Heading tag="h3" class="mb-2">Dwarf</Heading>
 			<P>
@@ -227,7 +241,7 @@
 	</Card>
 
 	<!-- Wode Elf -->
-	<Card padding="none" size="xl" class="rounded-md">
+	<Card id="elf-wode" padding="none" size="xl" class="rounded-md">
 		<div class="rounded-t-md p-4">
 			<Heading tag="h3" class="mb-2">Elf, Wode</Heading>
 			<P>
@@ -282,7 +296,7 @@
 	</Card>
 
 	<!-- High Elf -->
-	<Card padding="none" size="xl" class="rounded-md">
+	<Card id="elf-high" padding="none" size="xl" class="rounded-md">
 		<div class="rounded-t-md p-4">
 			<Heading tag="h3" class="mb-2">Elf, High</Heading>
 			<P>
@@ -338,7 +352,7 @@
 	</Card>
 
 	<!-- Hakaan -->
-	<Card padding="none" size="xl" class="rounded-md">
+	<Card id="hakaan" padding="none" size="xl" class="rounded-md">
 		<div class="rounded-t-md p-4">
 			<Heading tag="h3" class="mb-2">Hakaan</Heading>
 			<P>
@@ -395,7 +409,7 @@
 	</Card>
 
 	<!-- Human -->
-	<Card padding="none" size="xl" class="rounded-md">
+	<Card id="human" padding="none" size="xl" class="rounded-md">
 		<div class="rounded-t-md p-4">
 			<Heading tag="h3" class="mb-2">Human</Heading>
 			<P>
@@ -452,7 +466,7 @@
 	</Card>
 
 	<!-- Memonek -->
-	<Card padding="none" size="xl" class="rounded-md">
+	<Card id="memonek" padding="none" size="xl" class="rounded-md">
 		<div class="rounded-t-md p-4">
 			<Heading tag="h3" class="mb-2">Memonek</Heading>
 			<P>
@@ -523,7 +537,7 @@
 	</Card>
 
 	<!-- Orc -->
-	<Card padding="none" size="xl" class="rounded-md">
+	<Card id="orc" padding="none" size="xl" class="rounded-md">
 		<div class="rounded-t-md p-4">
 			<Heading tag="h3" class="mb-2">Orc</Heading>
 			<P>
@@ -574,6 +588,177 @@
 					<TableBodyCell>2 Pts</TableBodyCell>
 					<TableBodyCell>Nonstop</TableBodyCell>
 					<TableBodyCell>Cannot be slowed</TableBodyCell>
+				</TableBodyRow>
+			</TableBody>
+		</Table>
+	</Card>
+
+	<!-- Polder -->
+	<Card id="polder" padding="none" size="xl" class="rounded-md">
+		<div class="rounded-t-md p-4">
+			<Heading tag="h3" class="mb-2">Polder</Heading>
+			<P>
+				Short, sassy, and incredibly good at going unnoticed, polder can flatten themselves into a
+				shadow, getting into all sorts of places they shouldn't and eavesdropping with impunity.
+			</P>
+		</div>
+		<Table striped>
+			<TableHead>
+				<TableHeadCell class="trait-type">Type</TableHeadCell>
+				<TableHeadCell class="trait-name">Feature</TableHeadCell>
+				<TableHeadCell class="trait-effect">Effect</TableHeadCell>
+			</TableHead>
+			<TableBody tableBodyClass="divide-y">
+				<TableBodyRow>
+					<TableBodyCell>Signature</TableBodyCell>
+					<TableBodyCell>Shadowmeld</TableBodyCell>
+					<TableBodyCell>Become an actual shadow</TableBodyCell>
+				</TableBodyRow>
+				<TableBodyRow>
+					<TableBodyCell>Signature</TableBodyCell>
+					<TableBodyCell>Small!</TableBodyCell>
+					<TableBodyCell>Decreased Size</TableBodyCell>
+				</TableBodyRow>
+				<TableBodyRow>
+					<TableBodyCell>Signature</TableBodyCell>
+					<TableBodyCell>Purchased Traits (3)</TableBodyCell>
+					<TableBodyCell>3 Pts to pick from purchased features</TableBodyCell>
+				</TableBodyRow>
+				<TableBodyRow>
+					<TableBodyCell>1 Pt</TableBodyCell>
+					<TableBodyCell>Corruption Immunity</TableBodyCell>
+					<TableBodyCell>Resist corruption damage</TableBodyCell>
+				</TableBodyRow>
+				<TableBodyRow>
+					<TableBodyCell>1 Pt</TableBodyCell>
+					<TableBodyCell>Graceful Retreat</TableBodyCell>
+					<TableBodyCell>Extra movement on Disengage</TableBodyCell>
+				</TableBodyRow>
+				<TableBodyRow>
+					<TableBodyCell>1 Pt</TableBodyCell>
+					<TableBodyCell>Polder Geist</TableBodyCell>
+					<TableBodyCell>Extra movement when starting turn hidden</TableBodyCell>
+				</TableBodyRow>
+				<TableBodyRow>
+					<TableBodyCell>2 Pts</TableBodyCell>
+					<TableBodyCell>Fearless</TableBodyCell>
+					<TableBodyCell>Cannot be frightened</TableBodyCell>
+				</TableBodyRow>
+				<TableBodyRow>
+					<TableBodyCell>2 Pts</TableBodyCell>
+					<TableBodyCell>Nimblestep</TableBodyCell>
+					<TableBodyCell>Ignore difficult terrain and sneak at full speed</TableBodyCell>
+				</TableBodyRow>
+			</TableBody>
+		</Table>
+	</Card>
+
+	<!-- Revenant -->
+	<Card id="revenant" padding="none" size="xl" class="rounded-md">
+		<div class="rounded-t-md p-4">
+			<Heading tag="h3" class="mb-2">Revenant</Heading>
+			<P>
+				Undead with an axe to grind, revenants are the dead driven by work unfinished or a death
+				unjust. They carry some aspects of their ancestry forward in undeath, and can be notoriously
+				difficult to destroy.
+			</P>
+		</div>
+		<Table striped>
+			<TableHead>
+				<TableHeadCell class="trait-type">Type</TableHeadCell>
+				<TableHeadCell class="trait-name">Feature</TableHeadCell>
+				<TableHeadCell class="trait-effect">Effect</TableHeadCell>
+			</TableHead>
+			<TableBody tableBodyClass="divide-y">
+				<TableBodyRow>
+					<TableBodyCell>Signature</TableBodyCell>
+					<TableBodyCell>Former Life</TableBodyCell>
+					<TableBodyCell>Size based on your ancestry in life</TableBodyCell>
+				</TableBodyRow>
+				<TableBodyRow>
+					<TableBodyCell>Signature</TableBodyCell>
+					<TableBodyCell>Tough But Withered</TableBodyCell>
+					<TableBodyCell>Elemental resistances; fire weakness 5; can't die</TableBodyCell>
+				</TableBodyRow>
+				<TableBodyRow>
+					<TableBodyCell>Signature</TableBodyCell>
+					<TableBodyCell>Purchased Traits (2/3)</TableBodyCell>
+					<TableBodyCell>2 Pts, or 3 Pts if Size 1S, to pick from purchased features</TableBodyCell>
+				</TableBodyRow>
+				<TableBodyRow>
+					<TableBodyCell>1 Pt</TableBodyCell>
+					<TableBodyCell>Previous Life (1 Point)</TableBodyCell>
+					<TableBodyCell>Trait from your previous ancestry (repeatable)</TableBodyCell>
+				</TableBodyRow>
+				<TableBodyRow>
+					<TableBodyCell>1 Pt</TableBodyCell>
+					<TableBodyCell>Undead Influence</TableBodyCell>
+					<TableBodyCell>Boost to interactions with undead</TableBodyCell>
+				</TableBodyRow>
+				<TableBodyRow>
+					<TableBodyCell>2 Pts</TableBodyCell>
+					<TableBodyCell>Bloodless</TableBodyCell>
+					<TableBodyCell>Cannot become bleeding</TableBodyCell>
+				</TableBodyRow>
+				<TableBodyRow>
+					<TableBodyCell>2 Pts</TableBodyCell>
+					<TableBodyCell>Previous Life (2 Points)</TableBodyCell>
+					<TableBodyCell>Trait from your previous ancestry (repeatable)</TableBodyCell>
+				</TableBodyRow>
+				<TableBodyRow>
+					<TableBodyCell>2 Pts</TableBodyCell>
+					<TableBodyCell>Vengeance Mark</TableBodyCell>
+					<TableBodyCell>Explosive tracker sigil</TableBodyCell>
+				</TableBodyRow>
+			</TableBody>
+		</Table>
+	</Card>
+
+	<!-- Time Raider -->
+	<Card id="time-raider" padding="none" size="xl" class="rounded-md">
+		<div class="rounded-t-md p-4">
+			<Heading tag="h3" class="mb-2">Time Raider</Heading>
+			<P>
+				Four-armed space punks with crystals for eyes. Intractable, ungovernable, they loathe
+				authority, hate tyranny, and are totally, <em>utterly</em> without fear.
+			</P>
+		</div>
+		<Table striped>
+			<TableHead>
+				<TableHeadCell class="trait-type">Type</TableHeadCell>
+				<TableHeadCell class="trait-name">Feature</TableHeadCell>
+				<TableHeadCell class="trait-effect">Effect</TableHeadCell>
+			</TableHead>
+			<TableBody tableBodyClass="divide-y">
+				<TableBodyRow>
+					<TableBodyCell>Signature</TableBodyCell>
+					<TableBodyCell>Four Arms</TableBodyCell>
+					<TableBodyCell>Double grab, double knockback.</TableBodyCell>
+				</TableBodyRow>
+				<TableBodyRow>
+					<TableBodyCell>Signature</TableBodyCell>
+					<TableBodyCell>Purchased Traits (2)</TableBodyCell>
+					<TableBodyCell>2 Pts to pick from purchased features</TableBodyCell>
+				</TableBodyRow>
+				<TableBodyRow>
+					<TableBodyCell>1 Pt</TableBodyCell>
+					<TableBodyCell>Beyondsight</TableBodyCell>
+					<TableBodyCell>Ground-penetrating radar vision</TableBodyCell>
+				</TableBodyRow>
+				<TableBodyRow>
+					<TableBodyCell>1 Pt</TableBodyCell>
+					<TableBodyCell>Foresight</TableBodyCell>
+					<TableBodyCell>Ignore concealment, impose bane on attacks</TableBodyCell>
+				</TableBodyRow>
+				<TableBodyRow>
+					<TableBodyCell>1 Pt</TableBodyCell>
+					<TableBodyCell>Psychic Scar</TableBodyCell>
+					<TableBodyCell>Resist psychic damage</TableBodyCell>
+				</TableBodyRow>
+				<TableBodyRow>
+					<TableBodyCell>2 Pts</TableBodyCell>
+					<TableBodyCell>Psionic Gift</TableBodyCell>
+					<TableBodyCell>Psionic attack or buff</TableBodyCell>
 				</TableBodyRow>
 			</TableBody>
 		</Table>
