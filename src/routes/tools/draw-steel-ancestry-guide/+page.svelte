@@ -57,7 +57,7 @@
 	<Badge large href="#revenant" rounded color="indigo">Revenant</Badge>
 	<Badge large href="#time-raider" rounded color="pink">Time Raider</Badge>
 </div>
-<div class="grid grid-cols-1 gap-6 xl:grid-cols-2">
+<div class="grid grid-cols-1 gap-6">
 	<!-- Devil -->
 	<Card id="devil" padding="none" size="xl" class="rounded-md">
 		<div class="rounded-t-md p-4">

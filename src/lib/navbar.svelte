@@ -1,6 +1,15 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import { Navbar, NavBrand, NavHamburger, NavUl, NavLi } from 'flowbite-svelte';
+	import {
+		Navbar,
+		NavBrand,
+		NavHamburger,
+		NavUl,
+		NavLi,
+		Dropdown,
+		DropdownItem
+	} from 'flowbite-svelte';
+	import { ChevronDownOutline } from 'flowbite-svelte-icons';
 	import { DarkMode } from 'flowbite-svelte';
 	import type { SlideParams } from 'svelte/transition';
 	import { sineIn } from 'svelte/easing';
@@ -44,6 +53,12 @@
 		>
 			<NavLi href="/">Home</NavLi>
 			<NavLi href="/creators">Creators</NavLi>
+			<NavLi class="cursor-pointer">
+				Tools<ChevronDownOutline class="text-primary-800 ms-2 inline h-6 w-6 dark:text-white" />
+			</NavLi>
+			<Dropdown class="z-20 w-44">
+				<DropdownItem href="/tools/draw-steel-ancestry-guide">Ancestry Guide</DropdownItem>
+			</Dropdown>
 			<NavLi href="/about-us">About us</NavLi>
 			<NavLi><DarkMode /></NavLi>
 		</NavUl>
