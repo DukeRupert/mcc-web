@@ -43,11 +43,6 @@ export const load: PageServerLoad = async ({ url }) => {
 
   return {
     posts,
-    pagination: {
-      currentPage: page,
-      pageSize,
-      totalCount: Number(total),
-      route: url.pathname
-    }
+    total: Number(total)
   };
 };
