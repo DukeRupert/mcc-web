@@ -9,9 +9,7 @@
 	let p: PageProps = $props();
 	let posts = $derived(p.data.posts)
 	let pg = $derived(p.data.pagination)
-	$inspect(pg);
 	let pages = $derived(generatePagination(pg.currentPage, pg.pageSize, pg.totalCount, pg.route));
-	$inspect(pages);
 	const title = 'The Manifold | TTRPG Design Collective for Draw Steel & Tabletop RPGs | MCC';
 	const description = `The Manifold Creator Collective (MCC) unites passionate TTRPG designers developing content for Draw Steel and diverse tabletop roleplaying games. Our community showcases original creations, facilitates playtesting, offers professional design services, and shares expert resources. From established designers to newcomers, MCC provides tools, collaboration opportunities, and industry connections to advance your TTRPG projects. Join The Manifold and shape the future of tabletop gaming through our collaborative design community.`;
 	const url = page.url.href;

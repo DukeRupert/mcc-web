@@ -13,7 +13,8 @@ export const load: PageLoad = async ({ params }) => {
                 }
             }
         },
-        fields: ['*', { creator_id: ['title', 'slug', { avatar: ['id', 'height', 'width'] }] }, { image: ['id', 'width', 'height',] }, { category_id: ['*'] }]
+        fields: ['*', { creator_id: ['title', 'slug', { avatar: ['id', 'height', 'width'] }] }, { image: ['id', 'width', 'height',] }, { category_id: ['*'] }],
+        sort: ['-date_created']
     }))
 
     return {

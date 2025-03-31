@@ -34,15 +34,22 @@ export const load: PageServerLoad = async ({ url, params }) => {
     };
   }
 
+  console.log(`Tag id: ${id}`)
+
   // Finally, we can lookup posts filtered by matching tag id
   let posts = await client.request(readItems('post', {
     filter: {
       tags: {
-        _in: id
+        tag_id: {
+          id: {
+            _eq: id
+          },
+        },
       },
     },
     limit: 10,
-    fields: ['*', { creator_id: ['*', { avatar: ['id', 'width', 'height'] }] }, { category_id: ['*'] }, { image: ['id', 'width', 'height'] }]
+    fields: ['*', { creator_id: ['*', { avatar: ['id', 'width', 'height'] }] }, { category_id: ['*'] }, { image: ['id', 'width', 'height'] }],
+    sort: ['-date_created']
   }))
 
   return {

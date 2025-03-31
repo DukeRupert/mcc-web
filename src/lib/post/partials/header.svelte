@@ -10,7 +10,6 @@
 
 	let { post }: Props = $props();
 	let readTime = $state(0);
-	$inspect(page.url.pathname)
 
 	onMount(() => {
 		if (post.body) {

@@ -21,7 +21,7 @@ export const load: PageServerLoad = async ({ url }) => {
       limit: pageSize,
       page: page,
       fields: ['*', { creator_id: ['title', 'slug', { avatar: ['id', 'height', 'width'] }] }, { image: ['id', 'width', 'height',] }, { category_id: ['*'] }],
-      sort: ['sort', '-date_created']
+      sort: ['-date_created']
     }))
     totalCount = await client.request(aggregate('post', {
       aggregate: { count: '*' },

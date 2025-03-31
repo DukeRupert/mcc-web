@@ -3,8 +3,9 @@
 	import { Heading, A, P } from 'flowbite-svelte';
 	import Breadcrumbs from '$lib/page/breadcrumbs.svelte';
 	import List from '$lib/post/list.svelte';
-	let { data }: PageProps = $props();
-	let { slug, posts } = data;
+	let props: PageProps = $props();
+	let slug = $derived(props.data.slug)
+	let posts = $derived(props.data.posts)
 </script>
 
 <Breadcrumbs />

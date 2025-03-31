@@ -10,7 +10,6 @@
 
 	// Props
 	let { creator }: Props = $props();
-	$inspect(creator);
 
 	// Format date helper function
 	function formatDate(dateString: string): string {
